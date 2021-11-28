@@ -1,2 +1,3 @@
-# storybook-addon-useragent
-storybook-addon-useragent
+<img src="docs/assets/logo.png" height="100">
+
+# Storybook Addon : UserAgent
