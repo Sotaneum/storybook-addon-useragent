@@ -1,5 +1,5 @@
-import { customUserAgents } from "./userAgent";
+// import { customUserAgents } from "./userAgent";
 
 export const parameters = {
-  userAgent: customUserAgents,
+  //   userAgent: customUserAgents,
 };
