@@ -82,10 +82,7 @@
   "storybook": {
     "displayName": "UserAgent",
     "supportedFrameworks": [
-      "javascript",
-      "react",
-      "vue",
-      "angular"
+      "react"
     ],
     "icon": "https://raw.githubusercontent.com/Sotaneum/storybook-addon-useragent/main/docs/assets/logo.png"
   }
