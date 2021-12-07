@@ -1,3 +1,3 @@
-import ReRender from '../ReRender'
+import render from '../render'
 
-export const decorators = [ReRender];
+export const decorators = [render];
