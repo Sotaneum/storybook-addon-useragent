@@ -82,7 +82,8 @@
     }
   },
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "@sotaneum:registry": "https://npm.pkg.github.com"
   },
   "storybook": {
     "displayName": "UserAgent",
