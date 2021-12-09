@@ -42,12 +42,12 @@ const Data = styled.div({
 
 interface UserAgentInfoProps {
   name: string;
-  navigator?: Window["navigator"];
+  userAgent?: string;
 }
 
-export default function ({ name, navigator }: UserAgentInfoProps) {
+export default function ({ name, userAgent }: UserAgentInfoProps) {
   const [open, setOpen] = useState(false);
-  const userAgent = navigator?.userAgent;
+
   return (
     <Box>
       <Header onClick={() => setOpen(!open)}>

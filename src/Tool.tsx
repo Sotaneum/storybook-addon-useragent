@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 
-import { useGlobals } from "@storybook/api";
+import { useArgs } from "@storybook/api";
 import { WithTooltip, IconButton } from "@storybook/components";
 
 import Tooltip from "./components/Tooltip";
@@ -12,11 +12,17 @@ import { fetchIFrame } from "./utils";
 import { TOOL_ID } from "./constants";
 
 export const Tool = () => {
-  const [globals] = useGlobals();
+  const [args] = useArgs();
 
-  const { activeUserAgent } = globals;
+  const { activeUserAgent } = args;
 
   const change = useUserAgent(fetchIFrame());
+
+  useEffect(() => {
+    if (activeUserAgent && change) {
+      change(activeUserAgent);
+    }
+  }, [change, activeUserAgent]);
 
   return (
     <WithTooltip
