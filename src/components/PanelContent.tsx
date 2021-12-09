@@ -1,26 +1,18 @@
-import React, { useMemo } from "react";
+import React from "react";
 
-import { useGlobals } from "@storybook/api";
+import { useArgs } from "@storybook/api";
 import { Placeholder } from "@storybook/components";
 
 import UserAgent from "./UserAgent";
 
-import { fetchIFrame } from "../utils";
-
 export default function () {
-  const [globals] = useGlobals();
-
-  const iframe = fetchIFrame();
-  const { activeUserAgent } = globals;
-
-  const navigator = useMemo(() => {
-    return iframe ? iframe.contentWindow.navigator : null;
-  }, [iframe, activeUserAgent]);
+  const [args] = useArgs();
+  const { activeUserAgent } = args;
 
   return (
     <Placeholder>
-      <UserAgent name="iframe" navigator={navigator} />
-      <UserAgent name="Window" navigator={window.navigator} />
+      <UserAgent name="iframe" userAgent={activeUserAgent} />
+      <UserAgent name="Window" userAgent={window?.navigator?.userAgent} />
     </Placeholder>
   );
 }

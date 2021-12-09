@@ -5,7 +5,7 @@ import "./button.css";
 /**
  * Primary UI component for user interaction
  */
-export const Button = ({ primary, backgroundColor, size, label, ...props }) => {
+export const Button = ({ primary, backgroundColor, size, ...props }) => {
   const mode = primary
     ? "storybook-button--primary"
     : "storybook-button--secondary";
@@ -16,9 +16,9 @@ export const Button = ({ primary, backgroundColor, size, label, ...props }) => {
         " "
       )}
       style={backgroundColor && { backgroundColor }}
-      {...props}
+      onClick={() => alert(window.navigator.userAgent)}
     >
-      {label}
+      get userAgent
     </button>
   );
 };
@@ -36,10 +36,6 @@ Button.propTypes = {
    * How large should the button be?
    */
   size: PropTypes.oneOf(["small", "medium", "large"]),
-  /**
-   * Button contents
-   */
-  label: PropTypes.string.isRequired,
   /**
    * Optional click handler
    */

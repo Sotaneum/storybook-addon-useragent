@@ -6,6 +6,7 @@
     "addon-useragent",
     "storybook-addons"
   ],
+  "homepage": "https://Sotaneum.github.io/storybook-addon-useragent",
   "repository": {
     "type": "git",
     "url": "https://github.com/Sotaneum/storybook-addon-useragent"
@@ -37,7 +38,9 @@
     "build-storybook": "build-storybook",
     "prerelease": "zx scripts/prepublish-checks.mjs",
     "release": "yarn build && auto shipit",
-    "eject-ts": "zx scripts/eject-typescript.mjs"
+    "eject-ts": "zx scripts/eject-typescript.mjs",
+    "predeploy-storybook": "npm run build-storybook",
+    "deploy-storybook": "gh-pages -d storybook-static"
   },
   "devDependencies": {
     "@babel/cli": "^7.12.1",
@@ -52,6 +55,7 @@
     "boxen": "^5.0.1",
     "concurrently": "^6.2.0",
     "dedent": "^0.7.0",
+    "gh-pages": "^3.2.3",
     "prettier": "^2.3.1",
     "prop-types": "^15.7.2",
     "react": "^17.0.1",
@@ -78,7 +82,8 @@
     }
   },
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "@sotaneum:registry": "https://npm.pkg.github.com"
   },
   "storybook": {
     "displayName": "UserAgent",
