@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React from "react";
 
 import { useGlobals } from "@storybook/api";
 import { WithTooltip, IconButton } from "@storybook/components";
@@ -16,15 +16,13 @@ export const Tool = () => {
 
   const { activeUserAgent } = globals;
 
-  const iframe = useMemo(fetchIFrame, []);
-
-  const change = useUserAgent(iframe);
+  const change = useUserAgent(fetchIFrame());
 
   return (
     <WithTooltip
       key={TOOL_ID}
       placement="bottom"
-      trigger="hover"
+      trigger="click"
       tooltip={<Tooltip onChange={change} />}
     >
       <IconButton active={!!activeUserAgent} title="Change UserAgent">
