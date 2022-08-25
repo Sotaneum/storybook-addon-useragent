@@ -4,8 +4,7 @@ export const ADDON_ID = "storybook/user-agent";
 export const TOOL_ID = `${ADDON_ID}/tool`;
 export const PANEL_ID = `${ADDON_ID}/panel`;
 
-export const STORYBOOK_IFRAME_ID = "storybook-preview-iframe";
-export const LOG_MESSAGE = "userAgent Change : %s"
+export const STORYBOOK_INLINE_FRAME_ID = "storybook-preview-iframe";
 
 export const DEFAULT_USER_AGENT_PARAMETER: UserAgentParameter[] = [
   {
@@ -28,4 +27,4 @@ export const DEFAULT_USER_AGENT_PARAMETER: UserAgentParameter[] = [
     userAgent:
       "Mozilla/5.0 (Linux; Android 10; Android SDK built for x86) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.120 Mobile Safari/537.36",
   },
-]
+];
