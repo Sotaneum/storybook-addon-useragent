@@ -7,7 +7,7 @@ import Tooltip from "./components/Tooltip";
 
 import useUserAgent from "./hooks/useUserAgent";
 
-import { fetchIFrame } from "./utils";
+import { getInlineFrame } from "./utils";
 
 import { TOOL_ID } from "./constants";
 
@@ -16,10 +16,10 @@ export const Tool = () => {
 
   const { activeUserAgent } = args;
 
-  const change = useUserAgent(fetchIFrame());
+  const change = useUserAgent(getInlineFrame());
 
   useEffect(() => {
-    if (activeUserAgent && change) {
+    if (activeUserAgent) {
       change(activeUserAgent);
     }
   }, [change, activeUserAgent]);

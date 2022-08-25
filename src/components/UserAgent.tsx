@@ -53,9 +53,7 @@ export default function ({ name, userAgent }: UserAgentInfoProps) {
       <Header onClick={() => setOpen(!open)}>
         {!!userAgent && <ArrowIcon open={open} />}
         {`${name} > ${
-          userAgent
-            ? userAgent.replace(/^([\w\/\s\.(;),]{0,50}).+/, "$1...")
-            : "None"
+          userAgent?.replace(/^([\w\/\s\.(;),]{0,50}).+/, "$1...") ?? "None"
         }`}
       </Header>
       {!!userAgent &&
