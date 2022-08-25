@@ -1,3 +1,15 @@
+# v0.1.1 (Thu Aug 25 2022)
+
+#### 🐛 Bug Fix
+
+- yarn / npm 통일 [#5](https://github.com/Sotaneum/storybook-addon-useragent/pull/5) ([@Sotaneum](https://github.com/Sotaneum))
+
+#### Authors: 1
+
+- LEE DONG GUN ([@Sotaneum](https://github.com/Sotaneum))
+
+---
+
 # v0.1.0 (Thu Dec 09 2021)
 
 #### 🚀 Enhancement
