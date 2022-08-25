@@ -1,3 +1,15 @@
+# v0.1.2 (Thu Aug 25 2022)
+
+#### 🐛 Bug Fix
+
+- [refactoring] 로직 정리 [#6](https://github.com/Sotaneum/storybook-addon-useragent/pull/6) ([@Sotaneum](https://github.com/Sotaneum))
+
+#### Authors: 1
+
+- LEE DONG GUN ([@Sotaneum](https://github.com/Sotaneum))
+
+---
+
 # v0.1.1 (Thu Aug 25 2022)
 
 #### 🐛 Bug Fix
