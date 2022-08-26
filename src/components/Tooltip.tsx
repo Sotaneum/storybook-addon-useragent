@@ -1,11 +1,12 @@
 import React, { useMemo } from "react";
 
 import { useArgs, useParameter } from "@storybook/api";
-import { Link, TooltipLinkList } from "@storybook/components";
+import { TooltipLinkList } from "@storybook/components";
 
 import { DEFAULT_USER_AGENT_PARAMETER } from "../constants";
 
 import { TooltipProps, UserAgentParameter } from "../types";
+import { Link } from "@storybook/components/dist/ts3.9";
 
 export default function ({ onChange }: TooltipProps) {
   const [args, updateArgs] = useArgs();
