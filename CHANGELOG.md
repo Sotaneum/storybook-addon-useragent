@@ -1,3 +1,15 @@
+# v0.2.0 (Sat Aug 27 2022)
+
+#### 🚀 Enhancement
+
+- [support-react-18] react 18 지원 추가 [#8](https://github.com/Sotaneum/storybook-addon-useragent/pull/8) ([@Sotaneum](https://github.com/Sotaneum))
+
+#### Authors: 1
+
+- LEE DONG GUN ([@Sotaneum](https://github.com/Sotaneum))
+
+---
+
 # v0.1.3 (Sat Aug 27 2022)
 
 #### 🐛 Bug Fix
