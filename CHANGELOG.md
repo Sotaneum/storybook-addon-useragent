@@ -1,3 +1,15 @@
+# v0.1.3 (Sat Aug 27 2022)
+
+#### 🐛 Bug Fix
+
+- [refactoring] Storybook 6.5.x 지원 [#7](https://github.com/Sotaneum/storybook-addon-useragent/pull/7) ([@Sotaneum](https://github.com/Sotaneum))
+
+#### Authors: 1
+
+- LEE DONG GUN ([@Sotaneum](https://github.com/Sotaneum))
+
+---
+
 # v0.1.2 (Thu Aug 25 2022)
 
 #### 🐛 Bug Fix
