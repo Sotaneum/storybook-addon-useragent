@@ -14,7 +14,7 @@ const Icon = styled(Icons)<IconsProps>({
   display: "inline-flex",
 });
 
-export default function ({ open = false }) {
+export default function ArrowIcon({ open = false }) {
   return (
     <Icon
       icon="chevrondown"

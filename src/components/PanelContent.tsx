@@ -4,7 +4,7 @@ import { useArgs } from "@storybook/api";
 
 import UserAgent from "./UserAgent";
 
-export default function () {
+export default function PanelContent() {
   const [args] = useArgs();
   const { activeUserAgent } = args;
 

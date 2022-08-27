@@ -7,7 +7,7 @@ import { DEFAULT_USER_AGENT_PARAMETER } from "../constants";
 
 import { Link, TooltipProps, UserAgentParameter } from "../types";
 
-export default function ({ onChange }: TooltipProps) {
+export default function Tooltip({ onChange }: TooltipProps) {
   const [args, updateArgs] = useArgs();
   const userAgentList: UserAgentParameter[] =
     useParameter("userAgent") || DEFAULT_USER_AGENT_PARAMETER;
