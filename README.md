@@ -3,13 +3,35 @@
 </p>
 <h1 align="center">UserAgent Storybook Addon</h1>
 
+<p align="center">
+  <a href="https://www.npmjs.com/package/storybook-addon-useragent">
+    <img src="https://badgen.net/npm/v/storybook-addon-useragent" alt="npm version" />
+  </a>
+  <a href="https://npmjs.com/package/storybook-addon-useragent">
+    <img src="https://badgen.net/npm/dy/storybook-addon-useragent" alt="npm package yearly downloads" />
+  </a>
+  <a href="https://lbesson.mit-license.org/">
+    <img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="License" />
+  </a>
+  <a href="https://Sotaneum.github.io/storybook-addon-useragent/">
+    <img src="https://img.shields.io/badge/Demo-Storybook-pink.svg" alt="Demo" />
+  </a>
+</p>
+
 ## Features
 
 - Screens displayed differently depending on `UserAgent` can also be configured in Storybook.
 - Beyond simply analyzing whether or not mobile is based on the screen size, the page itself can be recognized as mobile.
 - You can use it without installing additional libraries.
 
-[Storybook Demo](https://Sotaneum.github.io/storybook-addon-useragent/)
+## Support
+
+| name      | version | info                                              |
+| --------- | ------- | ------------------------------------------------- |
+| React     | 16 ~ 17 | ✅ fully supported                                |
+| React     | 18      | 🚧 React 18 warning display, no functional issues |
+| Storybook | 5.3.x   | ✅ fully supported                                |
+| Storybook | 5.5.x   | ✅ fully supported                                |
 
 ## Installing and Setup
 
@@ -19,7 +41,7 @@ npm:
 npm i storybook-addon-useragent -D
 ```
 
-  yarn:
+yarn:
 
 ```sh
 yarn add storybook-addon-useragent -D
@@ -42,6 +64,7 @@ module.exports = {
 You can change the list item to any data you want.
 
 `.storybook/userAgent.js`
+
 ```js
 export const customUserAgents = [
   {
@@ -51,7 +74,9 @@ export const customUserAgents = [
   },
 ];
 ```
+
 `.storybook/preview.js`
+
 ```js
 import { customUserAgents } from "./userAgent";
 
@@ -90,4 +115,3 @@ IOS.args = {
     "Mozilla/5.0 (iPhone; CPU iPhone OS 12_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/12.1 Mobile/15E148 Safari/604.1",
 };
 ```
-

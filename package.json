@@ -48,9 +48,9 @@
     "@babel/preset-env": "^7.12.1",
     "@babel/preset-react": "^7.12.5",
     "@babel/preset-typescript": "^7.13.0",
-    "@storybook/addon-essentials": "^6.5.0",
-    "@storybook/react": "^6.5.0",
-    "@types/react": "^17.0.48",
+    "@storybook/addon-essentials": "^6.5.10",
+    "@storybook/react": "^6.5.10",
+    "@types/react": "^18.0.0",
     "auto": "^10.3.0",
     "babel-loader": "^8.1.0",
     "boxen": "^5.0.1",
@@ -59,8 +59,8 @@
     "gh-pages": "^3.2.3",
     "prettier": "^2.3.1",
     "prop-types": "^15.7.2",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "rimraf": "^3.0.2",
     "typescript": "^4.2.4",
     "zx": "1.14.2"
@@ -71,8 +71,8 @@
     "@storybook/components": "^6.3.6 || ^6.5.0",
     "@storybook/core-events": "^6.3.6 || ^6.5.0",
     "@storybook/theming": "^6.3.6 || ^6.5.0",
-    "react": "^16.8.0 || ^17.0.0",
-    "react-dom": "^16.8.0 || ^17.0.0"
+    "react": "^16.8.0 || ^17.0.0 || ^18.0.0",
+    "react-dom": "^16.8.0 || ^17.0.0 || ^18.0.0"
   },
   "peerDependenciesMeta": {
     "react": {
@@ -89,10 +89,7 @@
   "storybook": {
     "displayName": "UserAgent",
     "supportedFrameworks": [
-      "javascript",
-      "react",
-      "vue",
-      "angular"
+      "react"
     ],
     "icon": "https://raw.githubusercontent.com/Sotaneum/storybook-addon-useragent/main/docs/assets/logo.png"
   },
