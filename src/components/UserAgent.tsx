@@ -45,7 +45,7 @@ interface UserAgentInfoProps {
   userAgent?: string;
 }
 
-export default function ({ name, userAgent }: UserAgentInfoProps) {
+export default function UserAgent({ name, userAgent }: UserAgentInfoProps) {
   const [open, setOpen] = useState(false);
 
   return (
