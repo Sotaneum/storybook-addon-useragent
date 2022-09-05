@@ -3,8 +3,19 @@
   "version": "0.3.0",
   "description": "storybook-addon-useragent",
   "keywords": [
+    "addon",
+    "storybook",
+    "storybook-addons",
     "addon-useragent",
-    "storybook-addons"
+    "addon-user-agent",
+    "useragent",
+    "user-agent",
+    "style",
+    "design",
+    "agent",
+    "user",
+    "browser",
+    "os"
   ],
   "homepage": "https://Sotaneum.github.io/storybook-addon-useragent",
   "repository": {
