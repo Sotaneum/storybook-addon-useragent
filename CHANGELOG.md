@@ -1,3 +1,15 @@
+# v0.3.1 (Mon Sep 05 2022)
+
+#### 🐛 Bug Fix
+
+- [add-keyword] 키워드 추가 [#9](https://github.com/Sotaneum/storybook-addon-useragent/pull/9) ([@Sotaneum](https://github.com/Sotaneum))
+
+#### Authors: 1
+
+- LEE DONG GUN ([@Sotaneum](https://github.com/Sotaneum))
+
+---
+
 # v0.2.0 (Sat Aug 27 2022)
 
 #### 🚀 Enhancement
