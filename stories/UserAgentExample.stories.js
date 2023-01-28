@@ -1,19 +1,12 @@
 import React from "react";
-import { Button } from "./Button";
+import { UserAgentExample } from "./UserAgentExample";
 
 export default {
-  title: "Example/Button",
-  component: Button,
-  parameters: {
-    myAddonParameter: `
-<MyComponent boolProp scalarProp={1} complexProp={{ foo: 1, bar: '2' }}>
-  <SomeOtherComponent funcProp={(a) => a.id} />
-</MyComponent>
-`,
-  },
+  title: "Example/UserAgent",
+  component: UserAgentExample,
 };
 
-const Template = (args) => <Button {...args} />;
+const Template = (args) => <UserAgentExample {...args} />;
 
 export const IOS = Template.bind({});
 IOS.args = {
@@ -37,4 +30,9 @@ export const MAC = Template.bind({});
 MAC.args = {
   activeUserAgent:
     "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_6) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.0.3 Safari/605.1.15",
+};
+
+export const DISABLE_PANEL = Template.bind({});
+DISABLE_PANEL.parameters = {
+  userAgent: { disable: true },
 };

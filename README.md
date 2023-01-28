@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="docs/assets/logo.png" width="200">
+  <img src="docs/assets/logo.png" width="200" alt="user-agent logo">
 </p>
 <h1 align="center">UserAgent Storybook Addon</h1>
 
@@ -93,25 +93,55 @@ Items not in the list can also be specified.
 
 ```js
 import React from "react";
-import { Button } from "./Button";
+import { UserAgentExample } from "./UserAgentExample";
 
 export default {
-  title: "Example/Button",
-  component: Button,
-  parameters: {
-    myAddonParameter: `
-<MyComponent boolProp scalarProp={1} complexProp={{ foo: 1, bar: '2' }}>
-  <SomeOtherComponent funcProp={(a) => a.id} />
-</MyComponent>
-`,
-  },
+  title: "Example/UserAgentExample",
+  component: UserAgentExample,
 };
 
-const Template = (args) => <Button {...args} />;
+const Template = (args) => <UserAgentExample {...args} />;
 
 export const IOS = Template.bind({});
 IOS.args = {
   activeUserAgent:
     "Mozilla/5.0 (iPhone; CPU iPhone OS 12_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/12.1 Mobile/15E148 Safari/604.1",
+};
+```
+
+### Disable Panel
+
+Bottom panel can be disabled. Just add `userAgent: { disable: true }` to Parameter.
+
+`Disable specific story only`
+```js
+import React from "react";
+import { UserAgentExample } from "./UserAgentExample";
+
+export default {
+    title: "Example/UserAgent",
+    component: UserAgentExample,
+};
+
+const Template = (args) => <UserAgentExample {...args} />;
+
+export const DISABLE_PANEL = Template.bind({});
+DISABLE_PANEL.parameters = {
+    userAgent: { disable: true },
+};
+```
+
+`Disable all`
+
+```js
+import React from "react";
+import { UserAgentExample } from "./UserAgentExample";
+
+export default {
+    title: "Example/UserAgent",
+    component: UserAgentExample,
+    parameters: {
+        userAgent: { disable: true },
+    }
 };
 ```
