@@ -1,15 +1,12 @@
 import React from "react";
 
+import { RenderOptions } from "@storybook/addons";
 import { AddonPanel } from "@storybook/components";
 
 import PanelContent from "./components/PanelContent";
 
-interface PanelProps {
-  active: boolean;
-}
-
-export const Panel: React.FC<PanelProps> = (props) => (
-  <AddonPanel {...props}>
+export const Panel: React.FC<RenderOptions> = ({ key, active }) => (
+  <AddonPanel key={key} active={active}>
     <PanelContent />
   </AddonPanel>
 );
