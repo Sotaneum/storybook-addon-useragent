@@ -1,3 +1,15 @@
+# v0.4.0 (Sat Jan 28 2023)
+
+#### 🚀 Enhancement
+
+- add: panel disable option ( resolve - #10 ) [#11](https://github.com/Sotaneum/storybook-addon-useragent/pull/11) ([@Sotaneum](https://github.com/Sotaneum))
+
+#### Authors: 1
+
+- LEE DONG GUN ([@Sotaneum](https://github.com/Sotaneum))
+
+---
+
 # v0.3.1 (Mon Sep 05 2022)
 
 #### 🐛 Bug Fix
