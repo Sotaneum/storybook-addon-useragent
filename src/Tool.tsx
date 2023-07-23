@@ -31,13 +31,13 @@ export const Tool = () => {
       tooltip={<Tooltip onChange={change} />}
     >
       <IconButton
-        active={!!activeUserAgent}
+        rel=""
+        rev=""
         title="Change UserAgent"
-        content={undefined}
+        nonce=""
+        active={!!activeUserAgent}
+        content=""
         autoFocus={false}
-        nonce={undefined}
-        rel={undefined}
-        rev={undefined}
       >
         <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path
