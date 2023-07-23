@@ -1,25 +1,21 @@
 import React from 'react';
 
-import { styled, themes, convert } from '@storybook/theming';
-import { Icons, IconsProps } from '@storybook/components';
-
-const Icon = styled(Icons)<IconsProps>({
-  height: 10,
-  width: 10,
-  minWidth: 10,
-  color: convert(themes.normal).color.mediumdark,
-  marginRight: 10,
-  transition: 'transform 0.1s ease-in-out',
-  alignSelf: 'center',
-  display: 'inline-flex',
-});
+import { themes, convert } from '@storybook/theming';
+import { Icons } from '@storybook/components';
 
 export default function ArrowIcon({ open = false }) {
   return (
-    <Icon
+    <Icons
       icon="arrowdown"
       color={convert(themes.normal).appBorderColor}
       style={{
+        height: 10,
+        width: 10,
+        minWidth: 10,
+        marginRight: 10,
+        transition: 'transform 0.1s ease-in-out',
+        alignSelf: 'center',
+        display: 'inline-flex',
         transform: `rotate(${open ? 0 : -90}deg)`,
       }}
     />

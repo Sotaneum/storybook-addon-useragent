@@ -33,13 +33,6 @@ const Header = styled.div({
   },
 });
 
-const Data = styled.div({
-  padding: convert(themes.normal).layoutMargin,
-  marginLeft: convert(themes.normal).layoutMargin + 10,
-  marginBottom: convert(themes.normal).layoutMargin,
-  fontStyle: 'italic',
-});
-
 interface UserAgentInfoProps {
   name: string;
   userAgent?: string;
@@ -59,7 +52,17 @@ export default function UserAgent({ name, userAgent }: UserAgentInfoProps) {
       {!!userAgent &&
         open &&
         toUserAgentDetail(userAgent).map((text, idx) => (
-          <Data key={idx}>{text}</Data>
+          <div
+            key={idx}
+            style={{
+              padding: convert(themes.normal).layoutMargin,
+              fontStyle: 'italic',
+              marginLeft: convert(themes.normal).layoutMargin + 10,
+              marginBottom: convert(themes.normal).layoutMargin,
+            }}
+          >
+            {text}
+          </div>
         ))}
     </Box>
   );
