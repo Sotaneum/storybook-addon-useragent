@@ -1,19 +1,19 @@
-import React from "react";
-import PropTypes from "prop-types";
-import "./button.css";
+import React from 'react';
+import PropTypes from 'prop-types';
+import './button.css';
 
 /**
  * Primary UI component for user interaction
  */
 export const UserAgentExample = ({ size, primary, backgroundColor }) => {
   const mode = primary
-    ? "storybook-button--primary"
-    : "storybook-button--secondary";
+    ? 'storybook-button--primary'
+    : 'storybook-button--secondary';
   return (
     <button
       type="button"
-      className={["storybook-button", `storybook-button--${size}`, mode].join(
-        " "
+      className={['storybook-button', `storybook-button--${size}`, mode].join(
+        ' '
       )}
       style={backgroundColor && { backgroundColor }}
       onClick={() => alert(window.navigator.userAgent)}
@@ -35,7 +35,7 @@ UserAgentExample.propTypes = {
   /**
    * How large should the button be?
    */
-  size: PropTypes.oneOf(["small", "medium", "large"]),
+  size: PropTypes.oneOf(['small', 'medium', 'large']),
   /**
    * Optional click handler
    */
@@ -45,6 +45,6 @@ UserAgentExample.propTypes = {
 UserAgentExample.defaultProps = {
   backgroundColor: null,
   primary: false,
-  size: "medium",
+  size: 'medium',
   onClick: undefined,
 };

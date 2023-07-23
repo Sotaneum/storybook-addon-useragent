@@ -1,11 +1,11 @@
-import React, { useMemo } from "react";
+import React, { useMemo } from 'react';
 
-import { useArgs, useParameter } from "@storybook/api";
-import { TooltipLinkList } from "@storybook/components";
+import { useArgs, useParameter } from '@storybook/api';
+import { TooltipLinkList } from '@storybook/components';
 
-import { PARAM_KEY, DEFAULT_USER_AGENT_PARAMETER } from "../constants";
+import { PARAM_KEY, DEFAULT_USER_AGENT_PARAMETER } from '../constants';
 
-import { Link, TooltipProps, UserAgentParameter } from "../types";
+import { Link, TooltipProps, UserAgentParameter } from '../types';
 
 export default function Tooltip({ onChange }: TooltipProps) {
   const [args, updateArgs] = useArgs();
@@ -13,7 +13,7 @@ export default function Tooltip({ onChange }: TooltipProps) {
   const { activeUserAgent } = args;
 
   const handleClick = (userAgent: string) => {
-    const newUserAgent = activeUserAgent !== userAgent ? userAgent : "";
+    const newUserAgent = activeUserAgent !== userAgent ? userAgent : '';
     onChange(newUserAgent);
     updateArgs({ activeUserAgent: newUserAgent });
   };

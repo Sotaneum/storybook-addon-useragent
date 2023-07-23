@@ -1,4 +1,4 @@
-function config(entry = []) {
+function previewAnnotations(entry = []) {
   return [...entry, require.resolve("./dist/esm/preset/preview")];
 }
 
@@ -7,6 +7,6 @@ function managerEntries(entry = []) {
 }
 
 module.exports = {
-  config,
   managerEntries,
+  previewAnnotations,
 };

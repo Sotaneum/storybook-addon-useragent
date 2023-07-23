@@ -1,19 +1,18 @@
-import React, { useEffect } from "react";
+import React, { useEffect } from 'react';
 
-import { useArgs } from "@storybook/api";
-import { WithTooltip, IconButton } from "@storybook/components";
+import { useArgs } from '@storybook/api';
+import { WithTooltip, IconButton } from '@storybook/components';
 
-import Tooltip from "./components/Tooltip";
+import Tooltip from './components/Tooltip';
 
-import useUserAgent from "./hooks/useUserAgent";
+import useUserAgent from './hooks/useUserAgent';
 
-import { getInlineFrame } from "./utils";
+import { getInlineFrame } from './utils';
 
-import { TOOL_ID } from "./constants";
+import { TOOL_ID } from './constants';
 
 export const Tool = () => {
-  const [args] = useArgs();
-
+  const [args = {}] = useArgs();
   const { activeUserAgent } = args;
 
   const change = useUserAgent(getInlineFrame());
@@ -31,7 +30,15 @@ export const Tool = () => {
       trigger="click"
       tooltip={<Tooltip onChange={change} />}
     >
-      <IconButton active={!!activeUserAgent} title="Change UserAgent">
+      <IconButton
+        active={!!activeUserAgent}
+        title="Change UserAgent"
+        content={undefined}
+        autoFocus={false}
+        nonce={undefined}
+        rel={undefined}
+        rev={undefined}
+      >
         <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path
             strokeLinecap="round"

@@ -26,6 +26,17 @@
 
 ## Support
 
+### [v7.x.x](https://www.npmjs.com/package/storybook-addon-useragent)
+
+| name      | version | info                                                               |
+| --------- |---------|--------------------------------------------------------------------|
+| React     | 17 ~ 18 | ✅ fully supported                                                  |
+| Storybook | 7.x.x   | ✅ fully supported                                                  |
+| Storybook | 5.x.x   | 🚫 For versions below 7.0.0, use `storybook-addon-useragent@0.4.0` |
+
+
+### [v0.4.0](https://www.npmjs.com/package/storybook-addon-useragent/v/0.4.0)
+
 | name      | version | info                                              |
 | --------- | ------- | ------------------------------------------------- |
 | React     | 16 ~ 17 | ✅ fully supported                                |

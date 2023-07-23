@@ -1,11 +1,11 @@
-import React from "react";
+import React from 'react';
 
-import { useArgs } from "@storybook/api";
+import { useArgs } from '@storybook/api';
 
-import UserAgent from "./UserAgent";
+import UserAgent from './UserAgent';
 
 export default function PanelContent() {
-  const [args] = useArgs();
+  const [args = {}] = useArgs();
   const { activeUserAgent } = args;
 
   return (

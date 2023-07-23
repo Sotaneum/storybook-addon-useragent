@@ -1,11 +1,13 @@
-import React from "react";
+import React from 'react';
 
-import { RenderOptions } from "@storybook/addons";
-import { AddonPanel } from "@storybook/components";
+import { AddonPanel } from '@storybook/components';
 
-import PanelContent from "./components/PanelContent";
+import PanelContent from './components/PanelContent';
 
-export const Panel: React.FC<RenderOptions> = ({ key, active }) => (
+export const Panel: React.FC<{ key: string; active: boolean }> = ({
+  key,
+  active,
+}) => (
   <AddonPanel key={key} active={active}>
     <PanelContent />
   </AddonPanel>

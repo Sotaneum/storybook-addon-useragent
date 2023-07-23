@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react';
 
-import { styled, themes, convert } from "@storybook/theming";
-import { Icons, IconsProps } from "@storybook/components";
+import { styled, themes, convert } from '@storybook/theming';
+import { Icons, IconsProps } from '@storybook/components';
 
 const Icon = styled(Icons)<IconsProps>({
   height: 10,
@@ -9,15 +9,15 @@ const Icon = styled(Icons)<IconsProps>({
   minWidth: 10,
   color: convert(themes.normal).color.mediumdark,
   marginRight: 10,
-  transition: "transform 0.1s ease-in-out",
-  alignSelf: "center",
-  display: "inline-flex",
+  transition: 'transform 0.1s ease-in-out',
+  alignSelf: 'center',
+  display: 'inline-flex',
 });
 
 export default function ArrowIcon({ open = false }) {
   return (
     <Icon
-      icon="chevrondown"
+      icon="arrowdown"
       color={convert(themes.normal).appBorderColor}
       style={{
         transform: `rotate(${open ? 0 : -90}deg)`,

@@ -1,10 +1,10 @@
-import { useEffect, useState, makeDecorator } from "@storybook/addons";
+import { useEffect, useState, makeDecorator } from '@storybook/addons';
 
 export default makeDecorator({
-  name: "userAgentRender",
-  parameterName: "userAgent",
+  name: 'userAgentRender',
+  parameterName: 'userAgent',
   wrapper: (storyFn, context) => {
-    const nowUserAgent: string = context.globals.activeUserAgent ?? "";
+    const nowUserAgent: string = context.globals.activeUserAgent ?? '';
 
     const [key, setKey] = useState(Date.now());
     const [userAgent, setUserAgent] = useState(nowUserAgent);

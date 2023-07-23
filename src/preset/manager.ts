@@ -1,7 +1,7 @@
-import { addons, types } from "@storybook/addons";
+import { addons, types } from '@storybook/addons';
 
-import { Tool } from "../Tool";
-import { Panel } from "../Panel";
+import { Tool } from '../Tool';
+import { Panel } from '../Panel';
 
 import {
   TOOL_ID,
@@ -10,7 +10,7 @@ import {
   PARAM_KEY,
   TOOL_TITLE,
   PANEL_TITLE,
-} from "../constants";
+} from '../constants';
 
 addons.register(ADDON_ID, () => {
   addons.add(TOOL_ID, {
@@ -25,7 +25,7 @@ addons.register(ADDON_ID, () => {
     type: types.PANEL,
     title: PANEL_TITLE,
     paramKey: PARAM_KEY,
-    match: ({ viewMode }) => viewMode === "story",
+    match: ({ viewMode }) => viewMode === 'story',
     render: Panel,
   });
 });
