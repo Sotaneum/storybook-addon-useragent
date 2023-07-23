@@ -17,7 +17,7 @@ addons.register(ADDON_ID, () => {
     type: types.TOOL,
     title: TOOL_TITLE,
     paramKey: PARAM_KEY,
-    match: ({ viewMode }) => !!viewMode?.match(/^(story|docs)$/),
+    match: ({ viewMode }) => viewMode === 'story',
     render: Tool,
   });
 

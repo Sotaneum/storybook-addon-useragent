@@ -10,12 +10,12 @@ import { Link, TooltipProps, UserAgentParameter } from '../types';
 export default function Tooltip({ onChange }: TooltipProps) {
   const [args = {}, updateArgs] = useArgs();
   const userAgentList = getUserAgentList();
-  const { activeUserAgent } = args;
+  const { $activeUserAgent } = args;
 
   const handleClick = (userAgent: string) => {
-    const newUserAgent = activeUserAgent !== userAgent ? userAgent : '';
+    const newUserAgent = $activeUserAgent !== userAgent ? userAgent : '';
     onChange(newUserAgent);
-    updateArgs({ activeUserAgent: newUserAgent });
+    updateArgs({ $activeUserAgent: newUserAgent });
   };
 
   const links: Link[] = useMemo(
@@ -24,11 +24,11 @@ export default function Tooltip({ onChange }: TooltipProps) {
         return {
           id: `${idx}_${name}`,
           title: name,
-          active: userAgent === activeUserAgent,
+          active: userAgent === $activeUserAgent,
           onClick: () => handleClick(userAgent),
         };
       }),
-    [userAgentList, activeUserAgent]
+    [userAgentList, $activeUserAgent]
   );
 
   return <TooltipLinkList links={links} />;

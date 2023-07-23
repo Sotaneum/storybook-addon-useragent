@@ -13,15 +13,15 @@ import { TOOL_ID } from './constants';
 
 export const Tool = () => {
   const [args = {}] = useArgs();
-  const { activeUserAgent } = args;
+  const { $activeUserAgent } = args;
 
   const change = useUserAgent(getInlineFrame());
 
   useEffect(() => {
-    if (activeUserAgent) {
-      change(activeUserAgent);
+    if ($activeUserAgent) {
+      change($activeUserAgent);
     }
-  }, [change, activeUserAgent]);
+  }, [change, $activeUserAgent]);
 
   return (
     <WithTooltip
@@ -35,7 +35,7 @@ export const Tool = () => {
         rev=""
         title="Change UserAgent"
         nonce=""
-        active={!!activeUserAgent}
+        active={!!$activeUserAgent}
         content=""
         autoFocus={false}
       >

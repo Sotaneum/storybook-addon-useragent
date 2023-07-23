@@ -4,7 +4,7 @@ export default makeDecorator({
   name: 'userAgentRender',
   parameterName: 'userAgent',
   wrapper: (storyFn, context) => {
-    const nowUserAgent: string = context.globals.activeUserAgent ?? '';
+    const nowUserAgent: string = context.globals.$activeUserAgent ?? '';
 
     const [key, setKey] = useState(Date.now());
     const [userAgent, setUserAgent] = useState(nowUserAgent);
