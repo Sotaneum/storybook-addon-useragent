@@ -1,3 +1,15 @@
+# v0.4.1 (Mon Jul 31 2023)
+
+#### ⚠️ Pushed to `main`
+
+- Create FUNDING.yml ([@Sotaneum](https://github.com/Sotaneum))
+
+#### Authors: 1
+
+- LEE DONG GUN ([@Sotaneum](https://github.com/Sotaneum))
+
+---
+
 # v0.4.0 (Sat Jan 28 2023)
 
 #### 🚀 Enhancement
