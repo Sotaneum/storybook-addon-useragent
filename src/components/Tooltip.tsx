@@ -7,16 +7,15 @@ import { PARAM_KEY } from "../constants";
 import { DEFAULT_USER_AGENT_PARAMETER } from "../defaults";
 
 import { Link, UserAgentParameter } from "../types";
-import { getUseragent } from "../utils";
+import { getUserAgent } from "../utils";
 
 export default function Tooltip() {
   const [args, updateArgs] = useArgs();
   const userAgentList = getUserAgentList();
-  const activeUserAgent = getUseragent(args);
+  const currentUserAgent = getUserAgent(args);
 
-  const handleClick = (userAgent: string) => {
-    const newUserAgent = activeUserAgent !== userAgent ? userAgent : "";
-    updateArgs({ activeUserAgent: newUserAgent });
+  const handleClick = (userAgent?: string) => {
+    updateArgs({ useragent: currentUserAgent !== userAgent ? userAgent : "" });
   };
 
   const links: Link[] = useMemo(
@@ -25,11 +24,11 @@ export default function Tooltip() {
         return {
           id: `${idx}_${name}`,
           title: name,
-          active: userAgent === activeUserAgent,
+          active: userAgent === currentUserAgent,
           onClick: () => handleClick(userAgent),
         };
       }),
-    [userAgentList, activeUserAgent]
+    [userAgentList, currentUserAgent]
   );
 
   return <TooltipLinkList links={links} />;

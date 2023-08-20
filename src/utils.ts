@@ -1,4 +1,4 @@
-export function getUseragent(args?: { [key: string]: string }) {
+export function getUserAgent(args?: { [key: string]: string }) {
   if (!args) {
     return "";
   }

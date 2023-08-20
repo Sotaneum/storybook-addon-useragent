@@ -6,11 +6,11 @@ import { WithTooltip, IconButton } from "@storybook/components";
 import Tooltip from "./components/Tooltip";
 
 import { TOOL_ID } from "./constants";
-import { getUseragent } from "./utils";
+import { getUserAgent } from "./utils";
 
 export const Tool = () => {
   const [args] = useArgs();
-  const useragent = getUseragent(args);
+  const userAgent = getUserAgent(args);
 
   return (
     <WithTooltip
@@ -19,7 +19,7 @@ export const Tool = () => {
       trigger="click"
       tooltip={<Tooltip />}
     >
-      <IconButton active={!!useragent} title="Change UserAgent">
+      <IconButton active={!!userAgent} title="Change UserAgent">
         <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path
             strokeLinecap="round"
