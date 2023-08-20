@@ -7,7 +7,7 @@ export function getUseragent(args?: { [key: string]: string }) {
   }
   if (args["activeUserAgent"]) {
     console.warn(
-      '"activeUserAgent" is the args that will be removed soon. Please use "useragent".'
+      '"activeUserAgent" is an argument that will be removed in v6.4.0. Use "useragent".'
     );
     return args["activeUserAgent"];
   }
