@@ -104,44 +104,7 @@ const Template = (args) => <UserAgentExample {...args} />;
 
 export const IOS = Template.bind({});
 IOS.args = {
-  activeUserAgent:
+  useragent:
     "Mozilla/5.0 (iPhone; CPU iPhone OS 12_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/12.1 Mobile/15E148 Safari/604.1",
-};
-```
-
-### Disable Panel
-
-Bottom panel can be disabled. Just add `userAgent: { disable: true }` to Parameter.
-
-`Disable specific story only`
-```js
-import React from "react";
-import { UserAgentExample } from "./UserAgentExample";
-
-export default {
-    title: "Example/UserAgent",
-    component: UserAgentExample,
-};
-
-const Template = (args) => <UserAgentExample {...args} />;
-
-export const DISABLE_PANEL = Template.bind({});
-DISABLE_PANEL.parameters = {
-    userAgent: { disable: true },
-};
-```
-
-`Disable all`
-
-```js
-import React from "react";
-import { UserAgentExample } from "./UserAgentExample";
-
-export default {
-    title: "Example/UserAgent",
-    component: UserAgentExample,
-    parameters: {
-        userAgent: { disable: true },
-    }
 };
 ```
