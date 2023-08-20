@@ -5,9 +5,7 @@ import { WithTooltip, IconButton } from "@storybook/components";
 
 import Tooltip from "./components/Tooltip";
 
-import useUserAgent from "./hooks/useUserAgent";
-
-import { getInlineFrame } from "./utils";
+import useUserAgent from "./core";
 
 import { TOOL_ID } from "./constants";
 
@@ -16,7 +14,7 @@ export const Tool = () => {
 
   const { activeUserAgent } = args;
 
-  const change = useUserAgent(getInlineFrame());
+  const change = useUserAgent();
 
   useEffect(() => {
     if (activeUserAgent) {

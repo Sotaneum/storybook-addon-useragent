@@ -1,8 +1,8 @@
 import { useMemo, useCallback } from "react";
 
-import { changeUserAgent } from "../utils";
+import { changeUserAgent } from "./utils";
 
-export default function useUserAgent(iframe: HTMLIFrameElement) {
+export default function (iframe?: HTMLIFrameElement) {
   const beforeAgent = useMemo(() => window.navigator.userAgent, []);
 
   const change = useCallback(
