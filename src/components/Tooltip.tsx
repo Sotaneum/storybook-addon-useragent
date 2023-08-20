@@ -3,7 +3,8 @@ import React, { useMemo } from "react";
 import { useArgs, useParameter } from "@storybook/api";
 import { TooltipLinkList } from "@storybook/components";
 
-import { PARAM_KEY, DEFAULT_USER_AGENT_PARAMETER } from "../constants";
+import { PARAM_KEY } from "../constants";
+import { DEFAULT_USER_AGENT_PARAMETER } from "../defaults";
 
 import { Link, TooltipProps, UserAgentParameter } from "../types";
 
