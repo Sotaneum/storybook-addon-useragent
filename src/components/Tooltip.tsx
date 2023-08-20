@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useCallback, useMemo } from "react";
 
 import { useArgs, useParameter } from "@storybook/api";
 import { TooltipLinkList } from "@storybook/components";
@@ -11,25 +11,42 @@ import { getUserAgent } from "../utils";
 
 export default function Tooltip() {
   const [args, updateArgs] = useArgs();
-  const userAgentList = getUserAgentList();
   const currentUserAgent = getUserAgent(args);
+  const userAgentList = getUserAgentList();
 
-  const handleClick = (userAgent?: string) => {
-    updateArgs({ useragent: currentUserAgent !== userAgent ? userAgent : "" });
-  };
-
-  const links: Link[] = useMemo(
-    () =>
-      userAgentList.map(({ name, userAgent }, idx) => {
-        return {
-          id: `${idx}_${name}`,
-          title: name,
-          active: userAgent === currentUserAgent,
-          onClick: () => handleClick(userAgent),
-        };
-      }),
-    [userAgentList, currentUserAgent]
+  const setAgent = useCallback(
+    (userAgent?: string) => {
+      updateArgs({
+        useragent: currentUserAgent !== userAgent ? userAgent : "",
+      });
+    },
+    [updateArgs, currentUserAgent]
   );
+
+  const links: Link[] = useMemo(() => {
+    const items = userAgentList.map(({ name, userAgent }, idx) => {
+      return {
+        id: `${idx}_${name}`,
+        title: name,
+        active: userAgent === currentUserAgent,
+        onClick: () => setAgent(userAgent),
+      };
+    });
+
+    const hasActive = items.some(({ active }) => active);
+    const isCustomSelected = !!currentUserAgent && !hasActive;
+
+    if (isCustomSelected) {
+      items.push({
+        id: "custom agent",
+        title: "custom agent",
+        active: true,
+        onClick: () => setAgent(currentUserAgent),
+      });
+    }
+
+    return items;
+  }, [setAgent, userAgentList, currentUserAgent]);
 
   return <TooltipLinkList links={links} />;
 }
