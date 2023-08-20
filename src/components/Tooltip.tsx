@@ -7,11 +7,12 @@ import { PARAM_KEY } from "../constants";
 import { DEFAULT_USER_AGENT_PARAMETER } from "../defaults";
 
 import { Link, UserAgentParameter } from "../types";
+import { getUseragent } from "../utils";
 
 export default function Tooltip() {
   const [args, updateArgs] = useArgs();
   const userAgentList = getUserAgentList();
-  const { activeUserAgent } = args;
+  const activeUserAgent = getUseragent(args);
 
   const handleClick = (userAgent: string) => {
     const newUserAgent = activeUserAgent !== userAgent ? userAgent : "";
