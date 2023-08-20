@@ -6,7 +6,7 @@ export default makeDecorator({
   name: "userAgentRender",
   parameterName: "userAgent",
   wrapper: (storyFn, context) => {
-    const userAgent: string = getUserAgent(context.args);
+    const userAgent = getUserAgent(context.args);
 
     useEffect(() => setUserAgent(userAgent), [userAgent]);
 
