@@ -1,11 +1,9 @@
-import React, { useEffect } from "react";
+import React from "react";
 
 import { useArgs } from "@storybook/api";
 import { WithTooltip, IconButton } from "@storybook/components";
 
 import Tooltip from "./components/Tooltip";
-
-import useUserAgent from "./core";
 
 import { TOOL_ID } from "./constants";
 
@@ -14,20 +12,12 @@ export const Tool = () => {
 
   const { activeUserAgent } = args;
 
-  const change = useUserAgent();
-
-  useEffect(() => {
-    if (activeUserAgent) {
-      change(activeUserAgent);
-    }
-  }, [change, activeUserAgent]);
-
   return (
     <WithTooltip
       key={TOOL_ID}
       placement="bottom"
       trigger="click"
-      tooltip={<Tooltip onChange={change} />}
+      tooltip={<Tooltip />}
     >
       <IconButton active={!!activeUserAgent} title="Change UserAgent">
         <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">

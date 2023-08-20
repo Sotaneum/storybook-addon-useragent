@@ -6,16 +6,15 @@ import { TooltipLinkList } from "@storybook/components";
 import { PARAM_KEY } from "../constants";
 import { DEFAULT_USER_AGENT_PARAMETER } from "../defaults";
 
-import { Link, TooltipProps, UserAgentParameter } from "../types";
+import { Link, UserAgentParameter } from "../types";
 
-export default function Tooltip({ onChange }: TooltipProps) {
+export default function Tooltip() {
   const [args, updateArgs] = useArgs();
   const userAgentList = getUserAgentList();
   const { activeUserAgent } = args;
 
   const handleClick = (userAgent: string) => {
     const newUserAgent = activeUserAgent !== userAgent ? userAgent : "";
-    onChange(newUserAgent);
     updateArgs({ activeUserAgent: newUserAgent });
   };
 
