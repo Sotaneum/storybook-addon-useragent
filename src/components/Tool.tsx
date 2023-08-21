@@ -1,15 +1,20 @@
 import React, { useCallback, useMemo } from "react";
 
 import { useArgs, useParameter } from "@storybook/api";
-import { TooltipLinkList } from "@storybook/components";
+import {
+  WithTooltip,
+  IconButton,
+  TooltipLinkList,
+} from "@storybook/components";
 
-import { PARAM_KEY } from "../constants";
+import { getUserAgent } from "../utils";
+
+import { PARAM_KEY, TOOL_ID } from "../constants";
 import { DEFAULT_USER_AGENT_PARAMETER } from "../defaults";
 
 import { Link, UserAgentParameter } from "../types";
-import { getUserAgent } from "../utils";
 
-export default function Tooltip() {
+export const Tool = () => {
   const [args, updateArgs] = useArgs();
   const currentUserAgent = getUserAgent(args);
   const userAgentList = getUserAgentList();
@@ -48,8 +53,26 @@ export default function Tooltip() {
     return items;
   }, [setAgent, userAgentList, currentUserAgent]);
 
-  return <TooltipLinkList links={links} />;
-}
+  return (
+    <WithTooltip
+      key={TOOL_ID}
+      placement="bottom"
+      trigger="click"
+      tooltip={<TooltipLinkList links={links} />}
+    >
+      <IconButton active={currentUserAgent.length > 0} title="Change UserAgent">
+        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"
+          />
+        </svg>
+      </IconButton>
+    </WithTooltip>
+  );
+};
 
 function getUserAgentList(): UserAgentParameter[] {
   const fromParameter = useParameter(PARAM_KEY);

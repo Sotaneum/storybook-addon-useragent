@@ -1,3 +1,3 @@
-import render from '../render'
+import decorator from "../decorator";
 
-export const decorators = [render];
+export const decorators = [decorator];
