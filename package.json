@@ -1,6 +1,6 @@
 {
   "name": "storybook-addon-useragent",
-  "version": "0.4.0",
+  "version": "6.3.0",
   "description": "storybook-addon-useragent",
   "keywords": [
     "addon",
@@ -22,6 +22,7 @@
     "type": "git",
     "url": "https://github.com/Sotaneum/storybook-addon-useragent"
   },
+  "bugs": "https://github.com/Sotaneum/storybook-addon-useragent/issues",
   "author": "LEE DONGGUN",
   "license": "MIT",
   "main": "dist/cjs/index.js",
@@ -80,8 +81,6 @@
     "@storybook/addons": "^6.3.6 || ^6.5.0",
     "@storybook/api": "^6.3.6 || ^6.5.0",
     "@storybook/components": "^6.3.6 || ^6.5.0",
-    "@storybook/core-events": "^6.3.6 || ^6.5.0",
-    "@storybook/theming": "^6.3.6 || ^6.5.0",
     "react": "^16.8.0 || ^17.0.0 || ^18.0.0",
     "react-dom": "^16.8.0 || ^17.0.0 || ^18.0.0"
   },
@@ -99,10 +98,9 @@
   },
   "storybook": {
     "displayName": "UserAgent",
-    "supportedFrameworks": [
-      "react"
+    "unsupportedFrameworks": [
+      "react-native"
     ],
     "icon": "https://raw.githubusercontent.com/Sotaneum/storybook-addon-useragent/main/docs/assets/logo.png"
-  },
-  "dependencies": {}
+  }
 }

@@ -3,10 +3,6 @@ export interface UserAgentParameter {
   userAgent: string;
 }
 
-export interface TooltipProps {
-  onChange(userAgent: string): void;
-}
-
 export interface Link {
   id: string;
   title: string;
