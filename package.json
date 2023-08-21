@@ -98,8 +98,8 @@
   },
   "storybook": {
     "displayName": "UserAgent",
-    "supportedFrameworks": [
-      "react"
+    "unsupportedFrameworks": [
+      "react-native"
     ],
     "icon": "https://raw.githubusercontent.com/Sotaneum/storybook-addon-useragent/main/docs/assets/logo.png"
   }
