@@ -46,7 +46,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "storybook": "start-storybook -p 6006",
     "prestart": "rm -rf dist",
-    "start": "concurrently \"npm run build:watch\" \"npm run storybook -- --no-manager-cache --quiet\"",
+    "start": "concurrently \"npm run build:watch\" \"npm run storybook -- --no-manager-cache --quiet --no-version-updates\"",
     "build-storybook": "build-storybook",
     "prerelease": "zx scripts/prepublish-checks.mjs",
     "release": "npm run build && auto shipit",
