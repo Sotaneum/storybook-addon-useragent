@@ -1,6 +1,6 @@
 import React, { useCallback, useMemo } from "react";
 
-import { useArgs, useParameter } from "@storybook/api";
+import { useArgs, useParameter } from "@storybook/manager-api";
 import {
   WithTooltip,
   IconButton,

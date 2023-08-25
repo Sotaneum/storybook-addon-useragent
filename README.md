@@ -47,7 +47,7 @@ yarn:
 yarn add storybook-addon-useragent -D
 ```
 
-### Add it to addons in `.storybook/main.js`.
+### Add it to addons in `.storybook/main.ts`.
 
 ```js
 module.exports = {
