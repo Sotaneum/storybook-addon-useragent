@@ -4,7 +4,7 @@ module.exports = {
     "../stories/**/*.stories.@(js|jsx|ts|tsx)",
   ],
   addons: [
-    "./preset.js",
+    "./local-preset.js",
     {
       name: "@storybook/addon-essentials",
       options: {
