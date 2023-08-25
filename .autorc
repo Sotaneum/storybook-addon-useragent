@@ -1,7 +1,7 @@
 {
   "canary": {
     "target": "pr-body",
-    "message": "Install PR version: `yarn add -D my-project@%v`",
+    "message": "Install PR version: `npm install -D storybook-addon-useragent@%v`",
     "force": true
   }
 }
