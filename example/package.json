@@ -1,0 +1,33 @@
+{
+  "name": "storybook-addon-useragent-example",
+  "version": "1.0.0",
+  "description": "storybook addon useragent example",
+  "main": "index.js",
+  "scripts": {
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sotaneum/storybook-addon-useragent.git"
+  },
+  "author": "LEE DONGGUN",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Sotaneum/storybook-addon-useragent/issues"
+  },
+  "homepage": "https://github.com/Sotaneum/storybook-addon-useragent#readme",
+  "devDependencies": {
+    "@babel/core": "^7.22.11",
+    "@storybook/addon-actions": "^6.5.16",
+    "@storybook/addon-essentials": "^6.5.16",
+    "@storybook/addon-interactions": "^6.5.16",
+    "@storybook/addon-links": "^6.5.16",
+    "@storybook/builder-webpack4": "^6.5.16",
+    "@storybook/manager-webpack4": "^6.5.16",
+    "@storybook/react": "^6.5.16",
+    "@storybook/testing-library": "^0.2.0",
+    "babel-loader": "^8.3.0",
+    "storybook-addon-useragent": "^6.3.2"
+  }
+}

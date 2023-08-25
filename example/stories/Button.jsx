@@ -5,7 +5,7 @@ import "./button.css";
 /**
  * Primary UI component for user interaction
  */
-export const UserAgentExample = ({ size, primary, backgroundColor }) => {
+export const Button = ({ primary, backgroundColor, size, label, ...props }) => {
   const mode = primary
     ? "storybook-button--primary"
     : "storybook-button--secondary";
@@ -16,14 +16,15 @@ export const UserAgentExample = ({ size, primary, backgroundColor }) => {
         " "
       )}
       style={backgroundColor && { backgroundColor }}
+      {...props}
       onClick={() => alert(window.navigator.userAgent)}
     >
-      get userAgent
+      {label}
     </button>
   );
 };
 
-UserAgentExample.propTypes = {
+Button.propTypes = {
   /**
    * Is this the principal call to action on the page?
    */
@@ -37,12 +38,16 @@ UserAgentExample.propTypes = {
    */
   size: PropTypes.oneOf(["small", "medium", "large"]),
   /**
+   * Button contents
+   */
+  label: PropTypes.string.isRequired,
+  /**
    * Optional click handler
    */
   onClick: PropTypes.func,
 };
 
-UserAgentExample.defaultProps = {
+Button.defaultProps = {
   backgroundColor: null,
   primary: false,
   size: "medium",

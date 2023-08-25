@@ -27,11 +27,11 @@
 ## Support
 
 | name      | version | info                                              |
-| --------- | ------- | ------------------------------------------------- |
+| --------- |---------| ------------------------------------------------- |
 | React     | 16 ~ 17 | ✅ fully supported                                |
 | React     | 18      | 🚧 React 18 warning display, no functional issues |
-| Storybook | 5.3.x   | ✅ fully supported                                |
-| Storybook | 5.5.x   | ✅ fully supported                                |
+| Storybook | 6.3.x   | ✅ fully supported                                |
+| Storybook | 6.5.x   | ✅ fully supported                                |
 
 ## Installing and Setup
 
