@@ -3,6 +3,11 @@ import Template from "./Template";
 export default {
   title: "Example/UserAgent",
   component: Template,
+  parameters: {
+    previewTabs: {
+      "storybook/docs/panel": { hidden: true },
+    },
+  },
 };
 
 export const IOS = {
