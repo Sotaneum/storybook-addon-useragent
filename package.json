@@ -1,6 +1,6 @@
 {
   "name": "storybook-addon-useragent",
-  "version": "6.3.2",
+  "version": "6.4.0",
   "description": "storybook-addon-useragent",
   "keywords": [
     "addon",
@@ -47,7 +47,7 @@
     "storybook": "start-storybook -p 6006",
     "prestart": "rm -rf dist",
     "start": "concurrently \"npm run build:watch\" \"npm run storybook -- --no-manager-cache --quiet --no-version-updates\"",
-    "prebuild-storybook" : "npm run build",
+    "prebuild-storybook": "npm run build",
     "build-storybook": "build-storybook",
     "prerelease": "zx scripts/prepublish-checks.mjs",
     "release": "npm run build && auto shipit",
