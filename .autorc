@@ -1,0 +1,7 @@
+{
+  "canary": {
+    "target": "pr-body",
+    "message": "Install PR version: `yarn add -D my-project@%v`",
+    "force": true
+  }
+}
