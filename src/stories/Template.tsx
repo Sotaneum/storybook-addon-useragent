@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from "react";
 
-export default function Template({ useragent }) {
+interface TemplateProps {
+  useragent: string;
+}
+
+export default function Template({ useragent }: TemplateProps) {
   const [agent, setAgent] = useState("");
 
   useEffect(() => {
