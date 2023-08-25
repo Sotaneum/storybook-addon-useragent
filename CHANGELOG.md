@@ -1,3 +1,19 @@
+# v6.4.0 (Fri Aug 25 2023)
+
+#### 🚀 Enhancement
+
+- v6.4.0 [#25](https://github.com/Sotaneum/storybook-addon-useragent/pull/25) ([@Sotaneum](https://github.com/Sotaneum))
+
+#### 🐛 Bug Fix
+
+- [feature/update-trigger] main push 할때만, release 처리 [#14](https://github.com/Sotaneum/storybook-addon-useragent/pull/14) ([@Sotaneum](https://github.com/Sotaneum))
+
+#### Authors: 1
+
+- LEE DONG GUN ([@Sotaneum](https://github.com/Sotaneum))
+
+---
+
 # v0.4.1 (Mon Aug 21 2023)
 
 #### 🐛 Bug Fix
