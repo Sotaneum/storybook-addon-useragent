@@ -1,4 +1,4 @@
-import { addons, types } from "@storybook/addons";
+import { addons, types } from "@storybook/manager-api";
 
 import { Tool } from "./components/Tool";
 
@@ -9,7 +9,7 @@ addons.register(ADDON_ID, () => {
     type: types.TOOL,
     title: TOOL_TITLE,
     paramKey: PARAM_KEY,
-    match: ({ viewMode }) => !!viewMode?.match(/^(story|docs)$/),
+    match: ({ viewMode }) => viewMode === "story",
     render: Tool,
   });
 });
