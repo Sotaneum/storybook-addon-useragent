@@ -23,6 +23,6 @@
     "@storybook/react-vite": "^7.3.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "storybook-addon-useragent": "latest"
+    "storybook-addon-useragent": "^7.0.0"
   }
 }
