@@ -1,22 +1,11 @@
 module.exports = {
-  stories: [
-    "../stories/**/*.stories.mdx",
-    "../stories/**/*.stories.@(js|jsx|ts|tsx)",
-  ],
-
-  addons: [
-    "@storybook/addon-links",
-    "@storybook/addon-essentials",
-    "@storybook/addon-interactions",
-    "storybook-addon-useragent",
-  ],
-
+  stories: ["../stories/*.stories.jsx"],
+  addons: ["@storybook/addon-essentials", "storybook-addon-useragent"],
   framework: {
     name: "@storybook/react-vite",
-    options: {}
+    options: {},
   },
-
   docs: {
-    autodocs: true
-  }
+    autodocs: true,
+  },
 };

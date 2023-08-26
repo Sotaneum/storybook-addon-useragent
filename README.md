@@ -26,12 +26,22 @@
 
 ## Support
 
-| name      | version | info                                              |
-| --------- |---------| ------------------------------------------------- |
-| React     | 16 ~ 17 | ✅ fully supported                                |
-| React     | 18      | 🚧 React 18 warning display, no functional issues |
-| Storybook | 6.3.x   | ✅ fully supported                                |
-| Storybook | 6.5.x   | ✅ fully supported                                |
+### v7
+
+| name      | version  | info              |
+| --------- |----------|-------------------|
+| React     | <= 18    | ✅ fully supported |
+| Storybook | >= 7.0.0 | ✅ fully supported |
+| Storybook | < 7.0.0  | ❌ [using v6](https://www.npmjs.com/package/storybook-addon-useragent?activeTab=versions)    |
+
+### v6
+
+| name      | version | info                                                                                     |
+| --------- |---------|------------------------------------------------------------------------------------------|
+| React     | <= 18   | ✅ fully supported                                                                        |
+| Storybook | >= 7.0.0 | ❌ [using v7](https://www.npmjs.com/package/storybook-addon-useragent?activeTab=versions) |
+| Storybook | < 7.0.0  | ✅ fully supported                                                                        |
+
 
 ## Installing and Setup
 
@@ -47,7 +57,7 @@ yarn:
 yarn add storybook-addon-useragent -D
 ```
 
-### Add it to addons in `.storybook/main.ts`.
+### Add it to addons in `.storybook/main.js`.
 
 ```js
 module.exports = {
@@ -81,8 +91,10 @@ export const customUserAgents = [
 import { customUserAgents } from "./userAgent";
 
 export const parameters = {
+  ...
   userAgent: customUserAgents,
 };
+
 ```
 
 ### Set as default in `stories`
@@ -98,6 +110,9 @@ import { UserAgentExample } from "./UserAgentExample";
 export default {
   title: "Example/UserAgentExample",
   component: UserAgentExample,
+  argTypes: {
+    useragent: { control: "text" },
+  },
 };
 
 const Template = (args) => <UserAgentExample {...args} />;
