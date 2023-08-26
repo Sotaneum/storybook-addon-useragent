@@ -1,3 +1,15 @@
+# v7.0.0 (Sat Aug 26 2023)
+
+#### 💥 Breaking Change
+
+- v7.0.0 [#32](https://github.com/Sotaneum/storybook-addon-useragent/pull/32) ([@Sotaneum](https://github.com/Sotaneum))
+
+#### Authors: 1
+
+- LEE DONG GUN ([@Sotaneum](https://github.com/Sotaneum))
+
+---
+
 # v6.4.0 (Fri Aug 25 2023)
 
 #### 🚀 Enhancement
