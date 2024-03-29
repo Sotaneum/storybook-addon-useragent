@@ -55,6 +55,7 @@
     "release": "npm run build && auto shipit",
     "eject-ts": "zx scripts/eject-typescript.js",
     "storybook": "storybook dev -p 6006",
+    "prebuild-storybook": "npm run build",
     "build-storybook": "storybook build"
   },
   "devDependencies": {
