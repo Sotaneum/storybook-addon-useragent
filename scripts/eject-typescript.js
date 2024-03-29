@@ -11,8 +11,7 @@ console.log(chalk.green`
 🔃 Installing dependencies...
 
 `);
-
-await $`npm install -D @babel/cli @babel/preset-typescript --ignore-scripts`;
+await $`npm install --save-dev @babel/cli @babel/preset-typescript --ignore-scripts`;
 
 // Convert TS code to JS
 await $`babel --no-babelrc --presets @babel/preset-typescript ./srcTS -d ./src --extensions \".js,.jsx,.ts,.tsx\" --ignore "./srcTS/typings.d.ts"`;
@@ -23,7 +22,6 @@ console.log(chalk.green`
 💅 Format the newly created .js files...
 
 `);
-// Format the newly created .js files
 await $`prettier --write ./src`;
 
 // Add in minimal files required for the TS build setup
@@ -32,6 +30,7 @@ console.log(chalk.green`
 ➕ Add minimal files required for the TS build setup
 
 `);
+await $`prettier --write ./src`;
 await $`touch ./src/dummy.ts`;
 await $`printf "export {};" >> ./src/dummy.ts`;
 
@@ -40,13 +39,11 @@ await $`printf 'declare module "global";' >> ./src/typings.d.ts`;
 
 // Clean up
 await $`rm -rf ./srcTS`;
-
 console.log(chalk.green`
 
 🧹 Clean up...
 
 `);
-
 await $`npm uninstall @babel/cli @babel/preset-typescript --ignore-scripts`;
 
 console.log(
