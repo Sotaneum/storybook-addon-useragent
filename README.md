@@ -26,22 +26,11 @@
 
 ## Support
 
-### v7
-
-| name      | version  | info              |
-| --------- |----------|-------------------|
-| React     | <= 18    | ✅ fully supported |
-| Storybook | >= 7.0.0 | ✅ fully supported |
-| Storybook | < 7.0.0  | ❌ [using v6](https://www.npmjs.com/package/storybook-addon-useragent?activeTab=versions)    |
-
-### v6
-
-| name      | version | info                                                                                     |
-| --------- |---------|------------------------------------------------------------------------------------------|
-| React     | <= 18   | ✅ fully supported                                                                        |
-| Storybook | >= 7.0.0 | ❌ [using v7](https://www.npmjs.com/package/storybook-addon-useragent?activeTab=versions) |
-| Storybook | < 7.0.0  | ✅ fully supported                                                                        |
-
+| Storybook Version | Addon Version                          |
+| ----------------- | -------------------------------------- |
+| v8                | `npm i -D storybook-addon-useragent@8` |
+| v7                | `npm i -D storybook-addon-useragent@7` |
+| v6                | `npm i -D storybook-addon-useragent@6` |
 
 ## Installing and Setup
 
