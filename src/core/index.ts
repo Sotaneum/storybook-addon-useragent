@@ -1,17 +1,9 @@
-const beforeAgent = window.navigator.userAgent;
+import { set, getFromArgs } from "./manipulation";
 
-function updateUserAgent(userAgent: string) {
-  Object.defineProperty(window.navigator, "userAgent", {
-    get: () => userAgent,
-    configurable: true,
-  });
-}
+export * from "./types";
+export * from "./constants";
+export * from "./detection";
+export * from "./browser";
 
-export function setUserAgent(userAgent?: string) {
-  updateUserAgent(userAgent ? userAgent : beforeAgent);
-  return () => updateUserAgent(beforeAgent);
-}
-
-export function getUserAgent(args?: { [key: string]: string }) {
-  return !args || !args["useragent"] ? "" : args["useragent"];
-}
+export const setUserAgent = set;
+export const getUserAgent = getFromArgs;
