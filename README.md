@@ -20,9 +20,11 @@
 
 ## Features
 
-- Screens displayed differently depending on `UserAgent` can also be configured in Storybook.
-- Beyond simply analyzing whether or not mobile is based on the screen size, the page itself can be recognized as mobile.
-- You can use it without installing additional libraries.
+- Test and simulate different user agents directly in Storybook
+- Display content differently based on device and browser detection
+- Go beyond simple screen-size based device detection with actual UserAgent parsing
+- Use without installing additional dependencies
+- Support for modern User-Agent Client Hints API for more accurate browser and device detection
 
 ## Support
 
@@ -32,37 +34,45 @@
 | v7                | `npm i -D storybook-addon-useragent@7` |
 | v6                | `npm i -D storybook-addon-useragent@6` |
 
-## Installing and Setup
+## Installation
 
-npm:
-
-```sh
-npm i storybook-addon-useragent -D
-```
-
-yarn:
+Using npm:
 
 ```sh
-yarn add storybook-addon-useragent -D
+npm install storybook-addon-useragent --save-dev
 ```
 
-### Add it to addons in `.storybook/main.js`.
+Using yarn:
+
+```sh
+yarn add storybook-addon-useragent --dev
+```
+
+## Setup
+
+Add the addon to your Storybook configuration in `.storybook/main.js` (or `.storybook/main.ts`):
 
 ```js
-module.exports = {
-  ...
-  addons: [..., "storybook-addon-useragent"],
-  ...
+export default {
+  stories: ["../src/**/*.mdx", "../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
+  addons: [
+    // Other addons...
+    "storybook-addon-useragent",
+  ],
 };
 ```
 
 ## Usage
 
-### Customize list
+### Basic Usage
 
-You can change the list item to any data you want.
+Once installed, the UserAgent addon will appear in your Storybook UI. You can select from a list of predefined user agents to simulate different browsers and devices.
 
-`.storybook/userAgent.js`
+### Customizing UserAgent List
+
+You can customize the list of user agents available in the addon by creating a configuration file:
+
+`.storybook/userAgent.js`:
 
 ```js
 export const customUserAgents = [
@@ -71,26 +81,24 @@ export const customUserAgents = [
     userAgent:
       "Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; rv:11.0) like Gecko",
   },
+  // Add more custom user agents as needed
 ];
 ```
 
-`.storybook/preview.js`
+Then import and use it in your `.storybook/preview.js` file:
 
 ```js
 import { customUserAgents } from "./userAgent";
 
 export const parameters = {
-  ...
+  // Other parameters...
   userAgent: customUserAgents,
 };
-
 ```
 
-### Set as default in `stories`
+### Set Default UserAgent in Stories
 
-You can specify a default UserAgent value for story.
-
-Items not in the list can also be specified.
+You can set a default UserAgent for individual stories:
 
 ```js
 import React from "react";
@@ -99,9 +107,7 @@ import { UserAgentExample } from "./UserAgentExample";
 export default {
   title: "Example/UserAgentExample",
   component: UserAgentExample,
-  argTypes: {
-    useragent: { control: "text" },
-  },
+  argTypes: { useragent: { control: "text" } },
 };
 
 const Template = (args) => <UserAgentExample {...args} />;
@@ -112,3 +118,21 @@ IOS.args = {
     "Mozilla/5.0 (iPhone; CPU iPhone OS 12_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/12.1 Mobile/15E148 Safari/604.1",
 };
 ```
+
+## Client Hints Support
+
+This addon supports the User-Agent Client Hints API, which is a more modern and privacy-preserving way to get browser and device information than the traditional user agent string.
+
+### Available Client Hints Information:
+
+- Browser information (brand, version)
+- Platform information (platform, platformVersion)
+- Architecture information (architecture, bitness)
+- Mobile status detection
+- Device model information
+
+The addon automatically uses Client Hints in modern browsers while falling back to traditional User-Agent string parsing in older browsers.
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
