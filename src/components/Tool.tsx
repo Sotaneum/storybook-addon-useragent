@@ -3,7 +3,7 @@ import React, { useCallback, useMemo } from "react";
 import { useArgs, useParameter } from "@storybook/manager-api";
 import { WithTooltip, TooltipLinkList, Button } from "@storybook/components";
 
-import { getUserAgent } from "../utils";
+import { getUserAgent } from "../core";
 
 import { PARAM_KEY, TOOL_ID } from "../constants";
 import { DEFAULT_USER_AGENT_PARAMETER } from "../defaults";
