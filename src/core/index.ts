@@ -7,7 +7,11 @@ function updateUserAgent(userAgent: string) {
   });
 }
 
-export default function setUserAgent(userAgent?: string) {
+export function setUserAgent(userAgent?: string) {
   updateUserAgent(userAgent ? userAgent : beforeAgent);
   return () => updateUserAgent(beforeAgent);
+}
+
+export function getUserAgent(args?: { [key: string]: string }) {
+  return !args || !args["useragent"] ? "" : args["useragent"];
 }

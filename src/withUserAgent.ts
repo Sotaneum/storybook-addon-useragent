@@ -6,13 +6,11 @@ import type {
 
 import { useEffect } from "@storybook/preview-api";
 
-import setUserAgent from "./core";
-
-import { getUserAgent } from "./utils";
+import { setUserAgent, getUserAgent } from "./core";
 
 export function withUserAgent(
   StoryFn: StoryFunction<Renderer>,
-  context: StoryContext<Renderer>
+  context: StoryContext<Renderer>,
 ) {
   const userAgent = getUserAgent(context.args);
 
