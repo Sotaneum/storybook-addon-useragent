@@ -1,3 +1,23 @@
+# v8.1.0 (Mon Mar 24 2025)
+
+#### 🚀 Enhancement
+
+- v8.1.0 [#45](https://github.com/Sotaneum/storybook-addon-useragent/pull/45) ([@Sotaneum](https://github.com/Sotaneum))
+
+#### 🐛 Bug Fix
+
+- v8.0.1 [#38](https://github.com/Sotaneum/storybook-addon-useragent/pull/38) ([@Sotaneum](https://github.com/Sotaneum))
+
+#### ⚠️ Pushed to `main`
+
+- fix. actions ([@Sotaneum](https://github.com/Sotaneum))
+
+#### Authors: 1
+
+- DONG GUN LEE ([@Sotaneum](https://github.com/Sotaneum))
+
+---
+
 # v8.0.0 (Fri Mar 29 2024)
 
 #### 💥 Breaking Change
