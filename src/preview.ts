@@ -19,9 +19,7 @@ import { withUserAgent } from "./withUserAgent";
 
 const preview: ProjectAnnotations<Renderer> = {
   decorators: [withUserAgent],
-  globals: {
-    [PARAM_KEY]: false,
-  },
+  initialGlobals: { [PARAM_KEY]: false },
 };
 
 export default preview;
