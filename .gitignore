@@ -5,3 +5,6 @@ build-storybook.log
 .DS_Store
 .env
 .idea
+
+*storybook.log
+tests/temp/

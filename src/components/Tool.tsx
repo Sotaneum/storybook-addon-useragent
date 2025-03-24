@@ -3,7 +3,7 @@ import React, { useCallback, useMemo } from "react";
 import { useArgs, useParameter } from "@storybook/manager-api";
 import { WithTooltip, TooltipLinkList, Button } from "@storybook/components";
 
-import { getUserAgent } from "../utils";
+import { getUserAgent } from "../core";
 
 import { PARAM_KEY, TOOL_ID } from "../constants";
 import { DEFAULT_USER_AGENT_PARAMETER } from "../defaults";
@@ -11,10 +11,21 @@ import { DEFAULT_USER_AGENT_PARAMETER } from "../defaults";
 import { Link, UserAgentParameter } from "../types";
 import Icon from "./Icon";
 
-export const Tool = () => {
+// Hook to get user agent list (memoized)
+function useUserAgentList(): UserAgentParameter[] {
+  const fromParameter = useParameter(PARAM_KEY);
+  return useMemo(() => {
+    if (Array.isArray(fromParameter) && fromParameter.length > 0) {
+      return fromParameter;
+    }
+    return DEFAULT_USER_AGENT_PARAMETER;
+  }, [fromParameter]);
+}
+
+export const Tool = React.memo(() => {
   const [args, updateArgs] = useArgs();
   const currentUserAgent = getUserAgent(args);
-  const userAgentList = getUserAgentList();
+  const userAgentList = useUserAgentList();
 
   const setAgent = useCallback(
     (userAgent?: string) => {
@@ -67,12 +78,7 @@ export const Tool = () => {
       </Button>
     </WithTooltip>
   );
-};
+});
 
-function getUserAgentList(): UserAgentParameter[] {
-  const fromParameter = useParameter(PARAM_KEY);
-  if (Array.isArray(fromParameter) && fromParameter.length > 0) {
-    return fromParameter;
-  }
-  return DEFAULT_USER_AGENT_PARAMETER;
-}
+// Refactored getUserAgentList to a hook
+Tool.displayName = "UserAgentTool";
