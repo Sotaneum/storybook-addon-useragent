@@ -7,3 +7,4 @@ build-storybook.log
 .idea
 
 *storybook.log
+tests/temp/

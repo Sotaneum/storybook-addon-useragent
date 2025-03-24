@@ -42,4 +42,17 @@ export const REGEX = {
   },
   BROWSER:
     /(Chrome|Chromium|Edge|Brave|Opera)\/(\d+\.\d+)|(Firefox)\/(\d+\.\d+)|(Version)\/(\d+\.\d+).*Safari|(MSIE|Trident)\/(\d+\.\d+)/i,
+  PLATFORM_VERSION: {
+    WINDOWS: /Windows NT (\d+\.\d+)/i,
+    MACOS: /Mac OS X (\d+[._]\d+(?:[._]\d+)?)/i,
+    IOS: /iPhone OS (\d+[._]\d+(?:[._]\d+)?)/i,
+    ANDROID: /Android (\d+(?:\.\d+(?:\.\d+)?)?)/i,
+  },
+  BITNESS: {
+    WIN64: /Win64|x64|WOW64/i,
+    X86_64: /x86_64/i,
+    ARM64: /aarch64/i,
+    I686: /i686|i386/i,
+    ARM32: /armv\d+[^6]/i,
+  },
 };

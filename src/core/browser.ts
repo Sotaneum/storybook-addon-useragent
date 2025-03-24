@@ -1,6 +1,13 @@
 import { BROWSER_MAPPING, REGEX } from "./constants";
 import type { Brand, UserAgentData } from "./types";
-import { detectPlatform, detectArchitecture, detectModel } from "./detection";
+import {
+  detectPlatform,
+  detectArchitecture,
+  detectModel,
+  detectPlatformVersion,
+  detectBitness,
+  detectWow64,
+} from "./detection";
 
 export function isBrowserName(
   brand: string,
@@ -96,6 +103,12 @@ export async function parseUserAgent(
   const parsedPlatform = detectPlatform(userAgent);
   const parsedArchitecture = detectArchitecture(userAgent);
   const parsedModel = detectModel(userAgent);
+  const parsedPlatformVersion = detectPlatformVersion(
+    userAgent,
+    parsedPlatform,
+  );
+  const parsedBitness = detectBitness(userAgent);
+  const isWow64 = detectWow64(userAgent);
 
   const result: Partial<UserAgentData> = {
     userAgent,
@@ -103,9 +116,9 @@ export async function parseUserAgent(
     platform: parsedPlatform,
     architecture: parsedArchitecture,
     model: parsedModel,
-    platformVersion: "0",
-    bitness: "64",
-    wow64: false,
+    platformVersion: parsedPlatformVersion || "0",
+    bitness: parsedBitness || "64",
+    wow64: isWow64,
   };
 
   if (brandList && brandList.length > 0) {
