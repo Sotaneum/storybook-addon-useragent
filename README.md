@@ -28,13 +28,14 @@
 
 ## Installation and Compatibility
 
-| Storybook Version | Installation Command                   | Status                                   |
-| ----------------- | -------------------------------------- | ---------------------------------------- |
+| Storybook Version | Installation Command                   | Status                                     |
+| ----------------- | -------------------------------------- | ------------------------------------------ |
 | v8                | `npm i -D storybook-addon-useragent@8` | Current major version, actively maintained |
-| v7                | `npm i -D storybook-addon-useragent@7` | Legacy support                           |
-| v6                | `npm i -D storybook-addon-useragent@6` | Legacy support                           |
+| v7                | `npm i -D storybook-addon-useragent@7` | Legacy support                             |
+| v6                | `npm i -D storybook-addon-useragent@6` | Legacy support                             |
 
 You can check for updates and upgrade to the latest version:
+
 ```bash
 npm outdated
 npm install storybook-addon-useragent@latest
@@ -129,23 +130,25 @@ The addon automatically uses Client Hints in modern browsers while falling back 
 
 This addon uses modern browser APIs to simulate user agents:
 
-| Browser Category | Support Level | Browsers                              | Notes                                    |
-|------------------|--------------|---------------------------------------|------------------------------------------|
-| **Full Support** | ✅           | Chrome 89+, Edge 89+, Opera 75+        | All features work as expected            |
-| **Good Support** | ⚠️           | Firefox 90+, Safari 16.4+             | Most features work, some limitations      |
-| **Limited**      | ⚠️           | Safari 15-16.3, Firefox 78-89         | UserAgent string works, Client Hints limited |
-| **Minimal**      | ⚠️           | IE11, Legacy Edge                     | Basic functionality only                 |
+| Browser Category | Support Level | Browsers                        | Notes                                        |
+| ---------------- | ------------- | ------------------------------- | -------------------------------------------- |
+| **Full Support** | ✅            | Chrome 89+, Edge 89+, Opera 75+ | All features work as expected                |
+| **Good Support** | ⚠️            | Firefox 90+, Safari 16.4+       | Most features work, some limitations         |
+| **Limited**      | ⚠️            | Safari 15-16.3, Firefox 78-89   | UserAgent string works, Client Hints limited |
+| **Minimal**      | ⚠️            | IE11, Legacy Edge               | Basic functionality only                     |
 
 In browsers with limited support, the addon falls back to basic functionality while showing appropriate warnings.
 
 ## Performance Considerations
 
 The UserAgent addon has minimal impact on Storybook performance:
+
 - First-time initialization: ~5-20ms
 - Subsequent UserAgent changes: ~1-5ms
 - Memory usage: Negligible (<1MB)
 
 In rare cases, changing UserAgent in rapid succession may cause temporary UI flickering. We recommend:
+
 - Avoid changing UserAgent in loops
 - Allow sufficient time between UserAgent changes (>100ms)
 - Consider using the addon only in specific stories that require it
@@ -158,10 +161,10 @@ This example shows how to test a responsive component across multiple devices:
 
 ```js
 // ResponsiveComponent.stories.js
-import { ResponsiveComponent } from './ResponsiveComponent';
+import { ResponsiveComponent } from "./ResponsiveComponent";
 
 export default {
-  title: 'Components/ResponsiveComponent',
+  title: "Components/ResponsiveComponent",
   component: ResponsiveComponent,
 };
 
@@ -176,12 +179,14 @@ Desktop.args = {
 
 export const iPhone = Template.bind({});
 iPhone.args = {
-  useragent: 'Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.0 Mobile/15E148 Safari/604.1',
+  useragent:
+    "Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.0 Mobile/15E148 Safari/604.1",
 };
 
 export const Android = Template.bind({});
 Android.args = {
-  useragent: 'Mozilla/5.0 (Linux; Android 12; Pixel 6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.104 Mobile Safari/537.36',
+  useragent:
+    "Mozilla/5.0 (Linux; Android 12; Pixel 6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.104 Mobile Safari/537.36",
 };
 ```
 
@@ -204,12 +209,12 @@ This addon modifies the `navigator` object to simulate different user agents. Wh
 
 ### Common Issues
 
-| Issue | Possible Cause | Solution |
-|-------|---------------|----------|
-| UserAgent not changing | Browser security restrictions | Try a different browser (Chrome works best) |
-| UI components not responding to UserAgent | Component not using UA detection | Ensure component checks navigator.userAgent |
-| Stories show error when changing UA | Timing or cleanup issues | Reload the story or check for errors in console |
-| Inconsistent behavior | Caching or stale state | Clear browser cache and restart Storybook |
+| Issue                                     | Possible Cause                   | Solution                                        |
+| ----------------------------------------- | -------------------------------- | ----------------------------------------------- |
+| UserAgent not changing                    | Browser security restrictions    | Try a different browser (Chrome works best)     |
+| UI components not responding to UserAgent | Component not using UA detection | Ensure component checks navigator.userAgent     |
+| Stories show error when changing UA       | Timing or cleanup issues         | Reload the story or check for errors in console |
+| Inconsistent behavior                     | Caching or stale state           | Clear browser cache and restart Storybook       |
 
 ### Debugging Tips
 
@@ -231,19 +236,19 @@ Test how your components adapt to different device characteristics beyond just s
 
 ```jsx
 // DeviceResponsiveMenu.jsx
-import React from 'react';
-import { useUserAgent } from './useUserAgent';
+import React from "react";
+import { useUserAgent } from "./useUserAgent";
 
 export function DeviceResponsiveMenu({ items }) {
   const { isMobile, isTablet, isMacOS } = useUserAgent();
-  
+
   // Adapt menu based on device type
   return (
-    <nav className={`menu ${isMobile ? 'mobile-menu' : 'desktop-menu'}`}>
-      {items.map(item => (
-        <MenuItem 
-          key={item.id} 
-          item={item} 
+    <nav className={`menu ${isMobile ? "mobile-menu" : "desktop-menu"}`}>
+      {items.map((item) => (
+        <MenuItem
+          key={item.id}
+          item={item}
           useShortText={isMobile}
           useTouchOptimized={isMobile || isTablet}
           useNativeControls={isMacOS}
@@ -262,13 +267,13 @@ Conditionally enable features based on browser capability:
 function BrowserOptimizedVideo({ src }) {
   const userAgent = window.navigator.userAgent;
   const isSafari = /^((?!chrome|android).)*safari/i.test(userAgent);
-  
+
   return (
-    <video 
+    <video
       src={src}
       controls
       playsInline={isSafari} // Safari-specific attribute
-      format={isSafari ? 'hls' : 'dash'} // Different format based on browser
+      format={isSafari ? "hls" : "dash"} // Different format based on browser
     />
   );
 }
@@ -277,13 +282,8 @@ function BrowserOptimizedVideo({ src }) {
 ## Changelog and Updates
 
 We maintain a detailed changelog of all versions and updates:
+
 - [View the full CHANGELOG.md](https://github.com/Sotaneum/storybook-addon-useragent/blob/main/CHANGELOG.md)
-
-### Key Recent Updates
-
-- **v8.0.0**: Support for Storybook 8.x, improved security, enhanced browser detection
-- **v7.0.0**: Updated for Storybook 7.x, added Client Hints API support
-- **v6.4.0**: Enhanced browser detection, improved compatibility
 
 ## Contributing
 
@@ -297,5 +297,3 @@ If you encounter compatibility issues:
 2. Update to the latest patch version of the addon
 3. Report the issue with details about your environment at:
    [GitHub Issues](https://github.com/Sotaneum/storybook-addon-useragent/issues)
-
-We continuously monitor the Storybook ecosystem for changes that might affect this addon and provide regular updates to maintain compatibility.
