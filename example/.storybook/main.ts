@@ -1,12 +1,11 @@
-const stories = require("./stories");
-const framework = require("./framework");
+import type { StorybookConfig } from "@storybook/react-vite";
 
-module.exports = {
-  stories,
-  framework,
-  addons: ["storybook-addon-useragent", "@storybook/addon-docs"],
+const config: StorybookConfig = {
+  stories: [],
+  addons: ["storybook/addon-essentials", "storybook-addon-useragent"],
+  framework: { name: "@storybook/react-vite", options: {} },
   docs: {
-    //👇 See the table below for the list of supported options
     autodocs: "tag",
   },
 };
+export default config;

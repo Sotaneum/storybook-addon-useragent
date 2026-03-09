@@ -1,7 +1,7 @@
 import React, { useCallback, useMemo } from "react";
 
-import { useArgs, useParameter } from "@storybook/manager-api";
-import { WithTooltip, TooltipLinkList, Button } from "@storybook/components";
+import { useArgs, useParameter } from "storybook/manager-api";
+import { WithTooltip, TooltipLinkList, Button } from "storybook/components";
 
 import { getUserAgent } from "../core";
 
