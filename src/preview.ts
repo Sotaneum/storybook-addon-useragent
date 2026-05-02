@@ -1,9 +1,14 @@
 import type { Renderer, ProjectAnnotations } from "storybook/internal/types";
 import { PARAM_KEY } from "./constants";
-import { withUserAgent } from "./withUserAgent";
+import { setUserAgent, getUserAgent } from "./core";
 
 const preview: ProjectAnnotations<Renderer> = {
-  decorators: [withUserAgent],
+  loaders: [
+    async ({ args }) => {
+      await setUserAgent(getUserAgent(args));
+      return {};
+    },
+  ],
   initialGlobals: { [PARAM_KEY]: false },
 };
 

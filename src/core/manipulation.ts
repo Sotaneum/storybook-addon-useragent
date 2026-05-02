@@ -2,16 +2,12 @@ import type { UserAgentData, UserAgentArgs } from "./types";
 import { parseUserAgent } from "./browser";
 
 let initialized = false;
-let originalNavigator: Navigator | undefined;
 let beforeAgent = "";
-let currentUserAgent = "";
 
 function ensureInitialized(): void {
   if (initialized || typeof window === "undefined") return;
   initialized = true;
-  originalNavigator = window.navigator;
   beforeAgent = window.navigator.userAgent;
-  currentUserAgent = beforeAgent;
 }
 
 function setUserAgentData(parsedData: Partial<UserAgentData>): void {
@@ -92,39 +88,14 @@ async function updateUserAgent(userAgent: string): Promise<void> {
   }
 }
 
-export async function set(userAgent?: string): Promise<() => Promise<void>> {
-  if (typeof window === "undefined") return async () => {};
+export async function set(userAgent?: string): Promise<void> {
+  if (typeof window === "undefined") return;
   ensureInitialized();
 
   try {
-    if (!userAgent) {
-      currentUserAgent = beforeAgent;
-      await updateUserAgent(beforeAgent);
-      return async () => {};
-    }
-
-    currentUserAgent = userAgent;
-    await updateUserAgent(userAgent);
-
-    return async () => {
-      try {
-        if (originalNavigator) {
-          Object.defineProperty(window, "navigator", {
-            value: originalNavigator,
-            configurable: true,
-            writable: true,
-          });
-        } else {
-          await updateUserAgent(currentUserAgent);
-        }
-      } catch (error) {
-        console.warn("Failed to restore original navigator:", error);
-        await updateUserAgent(currentUserAgent);
-      }
-    };
+    await updateUserAgent(userAgent || beforeAgent);
   } catch (error) {
     console.warn("Error in userAgent setting process:", error);
-    return async () => {};
   }
 }
 
