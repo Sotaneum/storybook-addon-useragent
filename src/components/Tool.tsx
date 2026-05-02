@@ -1,7 +1,11 @@
 import React, { useCallback, useMemo } from "react";
 
 import { useArgs, useParameter } from "storybook/manager-api";
-import { WithTooltip, TooltipLinkList, Button } from "storybook/internal/components";
+import {
+  PopoverProvider,
+  TooltipLinkList,
+  ToggleButton,
+} from "storybook/internal/components";
 
 import { getUserAgent } from "../core";
 
@@ -62,21 +66,22 @@ export const Tool = React.memo(() => {
   }, [setAgent, userAgentList, currentUserAgent]);
 
   return (
-    <WithTooltip
+    <PopoverProvider
       key={TOOL_ID}
       placement="bottom"
-      trigger="click"
-      tooltip={<TooltipLinkList links={links} />}
+      ariaLabel="User-Agent options"
+      hasChrome={false}
+      popover={<TooltipLinkList links={links} />}
     >
-      <Button
-        active={currentUserAgent.length > 0}
-        title="Change UserAgent"
+      <ToggleButton
+        pressed={currentUserAgent.length > 0}
+        ariaLabel="Change UserAgent"
         padding="small"
         variant="ghost"
       >
         <Icon />
-      </Button>
-    </WithTooltip>
+      </ToggleButton>
+    </PopoverProvider>
   );
 });
 
