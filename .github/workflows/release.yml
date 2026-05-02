@@ -5,20 +5,20 @@ on:
     branches:
       - main
   pull_request:
-    types: [edited, opened, reopened]
+    types: [edited, opened, synchronize, reopened]
 
 jobs:
   release:
     runs-on: ubuntu-latest
     if: ${{ !contains(github.event.head_commit.message, 'ci skip') && !contains(github.event.head_commit.message, 'skip ci') }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Prepare repository
         run: git fetch --unshallow --tags
 
       - name: Use Node.js lts/*
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
           node-version: lts/*
           registry-url: https://registry.npmjs.org/

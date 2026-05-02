@@ -6,14 +6,7 @@ const config: StorybookConfig = {
     "../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"
   ],
   "addons": [
-    {
-      "name": "@storybook/addon-essentials",
-      "options": {
-        "docs": true
-      }
-    },
-    "@chromatic-com/storybook",
-    "@storybook/addon-interactions",
+    "@storybook/addon-docs",
     "storybook-addon-useragent"
   ],
   "framework": {

@@ -1,3 +1,10 @@
+import type { Preview } from "@storybook/react";
 import { customUserAgents } from "./userAgent";
 
-export const parameters = { userAgent: customUserAgents };
+const preview: Preview = {
+  parameters: {
+    userAgent: customUserAgents,
+  },
+};
+
+export default preview;

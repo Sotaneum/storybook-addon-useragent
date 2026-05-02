@@ -1,12 +1,9 @@
-const stories = require("./stories");
-const framework = require("./framework");
+import type { StorybookConfig } from "@storybook/vue3-vite";
 
-module.exports = {
-  stories,
-  framework,
+const config: StorybookConfig = {
+  stories: ["../stories/*.stories.ts"],
+  framework: { name: "@storybook/vue3-vite", options: {} },
   addons: ["storybook-addon-useragent", "@storybook/addon-docs"],
-  docs: {
-    //👇 See the table below for the list of supported options
-    autodocs: "tag",
-  },
 };
+
+export default config;

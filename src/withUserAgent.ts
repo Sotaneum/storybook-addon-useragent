@@ -2,9 +2,9 @@ import type {
   Renderer,
   PartialStoryFn as StoryFunction,
   StoryContext,
-} from "@storybook/types";
+} from "storybook/internal/types";
 
-import { useEffect, useMemo, useState } from "@storybook/preview-api";
+import { useEffect, useMemo, useState } from "storybook/preview-api";
 
 import { setUserAgent, getUserAgent } from "./core";
 
@@ -16,6 +16,7 @@ export function withUserAgent(
 
   const userAgent = useMemo(
     () => getUserAgent(context.args),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [context.args?.useragent],
   );
 

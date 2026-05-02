@@ -9,7 +9,12 @@ export default function Template({ useragent }: TemplateProps) {
     <div>
       window.navigator.userAgent:
       <br />
-      <textarea cols={100} rows={10} value={window.navigator.userAgent} readOnly />
+      <textarea
+        cols={100}
+        rows={10}
+        value={window.navigator.userAgent}
+        readOnly
+      />
       <br />
       <br />
       (storybook) args.useragent:
@@ -19,7 +24,12 @@ export default function Template({ useragent }: TemplateProps) {
       <br />
       (storybook) window.navigator.userAgentData:
       <br />
-      <textarea cols={100} rows={10} value={JSON.stringify(window.navigator.userAgentData)} readOnly />
+      <textarea
+        cols={100}
+        rows={10}
+        value={JSON.stringify(window.navigator.userAgentData)}
+        readOnly
+      />
       <br />
       <br />
       (storybook) window.top.navigator.userAgent:
@@ -27,7 +37,7 @@ export default function Template({ useragent }: TemplateProps) {
       <textarea
         cols={100}
         rows={10}
-        value={window.top.navigator.userAgent}
+        value={window.top!.navigator.userAgent}
         readOnly
       />
     </div>

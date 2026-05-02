@@ -30,7 +30,8 @@
 
 | Storybook Version | Installation Command                   | Status                                     |
 | ----------------- | -------------------------------------- | ------------------------------------------ |
-| v8                | `npm i -D storybook-addon-useragent@8` | Current major version, actively maintained |
+| v9                | `npm i -D storybook-addon-useragent@9` | Current major version, actively maintained |
+| v8                | `npm i -D storybook-addon-useragent@8` | Legacy support                             |
 | v7                | `npm i -D storybook-addon-useragent@7` | Legacy support                             |
 | v6                | `npm i -D storybook-addon-useragent@6` | Legacy support                             |
 
@@ -78,37 +79,45 @@ export const customUserAgents = [
 ];
 ```
 
-Then import and use it in your `.storybook/preview.js` file:
+Then import and use it in your `.storybook/preview.ts` file:
 
-```js
+```ts
+import type { Preview } from "@storybook/react";
 import { customUserAgents } from "./userAgent";
 
-export const parameters = {
-  // Other parameters...
-  userAgent: customUserAgents,
+const preview: Preview = {
+  parameters: {
+    // Other parameters...
+    userAgent: customUserAgents,
+  },
 };
+
+export default preview;
 ```
 
 ### Set Default UserAgent in Stories
 
 You can set a default UserAgent for individual stories:
 
-```js
-import React from "react";
+```ts
+import type { Meta, StoryObj } from "@storybook/react";
 import { UserAgentExample } from "./UserAgentExample";
 
-export default {
+const meta: Meta<typeof UserAgentExample> = {
   title: "Example/UserAgentExample",
   component: UserAgentExample,
   argTypes: { useragent: { control: "text" } },
 };
 
-const Template = (args) => <UserAgentExample {...args} />;
+export default meta;
 
-export const IOS = Template.bind({});
-IOS.args = {
-  useragent:
-    "Mozilla/5.0 (iPhone; CPU iPhone OS 12_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/12.1 Mobile/15E148 Safari/604.1",
+type Story = StoryObj<typeof UserAgentExample>;
+
+export const IOS: Story = {
+  args: {
+    useragent:
+      "Mozilla/5.0 (iPhone; CPU iPhone OS 12_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/12.1 Mobile/15E148 Safari/604.1",
+  },
 };
 ```
 
