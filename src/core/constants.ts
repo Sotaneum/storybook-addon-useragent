@@ -1,3 +1,5 @@
+export const ARG_KEY = "useragent";
+
 export const PLATFORMS = {
   WINDOWS: "Windows",
   MACINTOSH: "Macintosh",

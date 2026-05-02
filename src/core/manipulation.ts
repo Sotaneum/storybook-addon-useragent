@@ -1,10 +1,11 @@
 import type { UserAgentData, UserAgentArgs } from "./types";
 import { parseUserAgent } from "./browser";
-import { ARG_KEY } from "../constants";
+import { ARG_KEY } from "./constants";
 
 let initialized = false;
 let beforeAgent = "";
 let originalNavigator: Navigator | undefined;
+let seq = 0;
 
 function ensureInitialized(): void {
   if (initialized || typeof window === "undefined") return;
@@ -16,10 +17,15 @@ function ensureInitialized(): void {
 async function applyNavigator(userAgent: string): Promise<void> {
   if (typeof window === "undefined" || !originalNavigator) return;
 
+  // Tag this invocation. If a newer set() starts while we await below, we
+  // discard our own result so the most recent call wins deterministically.
+  const my = ++seq;
+
   let userAgentData: UserAgentData | undefined;
   if (originalNavigator.userAgentData) {
     try {
       const parsed = await parseUserAgent(userAgent);
+      if (my !== seq) return;
       userAgentData = {
         ...originalNavigator.userAgentData,
         ...parsed,
@@ -29,6 +35,8 @@ async function applyNavigator(userAgent: string): Promise<void> {
       console.warn("Failed to parse userAgent for userAgentData:", error);
     }
   }
+
+  if (my !== seq) return;
 
   // Always proxy the original navigator so repeated set() calls don't
   // accumulate proxy chains.
