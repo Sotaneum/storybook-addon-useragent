@@ -1,27 +1,17 @@
 import type { UserAgentData, UserAgentArgs } from "./types";
 import { parseUserAgent } from "./browser";
 
-let currentUserAgent =
-  typeof window !== "undefined" ? window.navigator.userAgent : "";
-
-const beforeAgent =
-  typeof window !== "undefined" ? window.navigator.userAgent : "";
-
+let initialized = false;
 let originalNavigator: Navigator | undefined;
-if (typeof window !== "undefined") {
+let beforeAgent = "";
+let currentUserAgent = "";
+
+function ensureInitialized(): void {
+  if (initialized || typeof window === "undefined") return;
+  initialized = true;
   originalNavigator = window.navigator;
-
-  (async () => {
-    try {
-      const initialParsedData = await parseUserAgent(beforeAgent);
-
-      if (window.navigator.userAgentData) {
-        setUserAgentData(initialParsedData);
-      }
-    } catch (error) {
-      console.warn("Failed to initialize consistent userAgentData:", error);
-    }
-  })();
+  beforeAgent = window.navigator.userAgent;
+  currentUserAgent = beforeAgent;
 }
 
 function setUserAgentData(parsedData: Partial<UserAgentData>): void {
@@ -104,6 +94,7 @@ async function updateUserAgent(userAgent: string): Promise<void> {
 
 export async function set(userAgent?: string): Promise<() => Promise<void>> {
   if (typeof window === "undefined") return async () => {};
+  ensureInitialized();
 
   try {
     if (!userAgent) {
