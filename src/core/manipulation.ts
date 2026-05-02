@@ -138,5 +138,5 @@ export async function set(userAgent?: string): Promise<() => Promise<void>> {
 }
 
 export function getFromArgs(args?: UserAgentArgs): string {
-  return args?.useragent || "";
+  return args?.useragent ?? "";
 }

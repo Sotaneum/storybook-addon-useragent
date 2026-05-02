@@ -15,9 +15,8 @@ import { DEFAULT_USER_AGENT_PARAMETER } from "../defaults";
 import { Link, UserAgentParameter } from "../types";
 import Icon from "./Icon";
 
-// Hook to get user agent list (memoized)
 function useUserAgentList(): UserAgentParameter[] {
-  const fromParameter = useParameter(PARAM_KEY);
+  const fromParameter = useParameter<UserAgentParameter[]>(PARAM_KEY);
   return useMemo(() => {
     if (Array.isArray(fromParameter) && fromParameter.length > 0) {
       return fromParameter;
@@ -26,7 +25,7 @@ function useUserAgentList(): UserAgentParameter[] {
   }, [fromParameter]);
 }
 
-export const Tool = React.memo(() => {
+export function Tool() {
   const [args, updateArgs] = useArgs();
   const currentUserAgent = getUserAgent(args);
   const userAgentList = useUserAgentList();
@@ -83,7 +82,6 @@ export const Tool = React.memo(() => {
       </ToggleButton>
     </PopoverProvider>
   );
-});
+}
 
-// Refactored getUserAgentList to a hook
 Tool.displayName = "UserAgentTool";
