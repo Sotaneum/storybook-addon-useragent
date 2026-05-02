@@ -16,6 +16,7 @@ export function withUserAgent(
 
   const userAgent = useMemo(
     () => getUserAgent(context.args),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [context.args?.useragent],
   );
 
