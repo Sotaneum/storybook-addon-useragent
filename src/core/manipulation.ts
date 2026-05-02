@@ -3,100 +3,69 @@ import { parseUserAgent } from "./browser";
 
 let initialized = false;
 let beforeAgent = "";
+let originalNavigator: Navigator | undefined;
 
 function ensureInitialized(): void {
   if (initialized || typeof window === "undefined") return;
   initialized = true;
   beforeAgent = window.navigator.userAgent;
+  originalNavigator = window.navigator;
 }
 
-function setUserAgentData(parsedData: Partial<UserAgentData>): void {
-  if (typeof window === "undefined" || !window.navigator.userAgentData) return;
+async function applyNavigator(userAgent: string): Promise<void> {
+  if (typeof window === "undefined" || !originalNavigator) return;
 
-  try {
-    const userAgentDataProxy = {
-      ...window.navigator.userAgentData,
-      ...parsedData,
-      getHighEntropyValues: async () => parsedData,
-    };
-
-    const navigatorProxy = new Proxy(window.navigator, {
-      get(target, prop) {
-        if (prop === "userAgentData") {
-          return userAgentDataProxy;
-        }
-        return Reflect.get(target, prop);
-      },
-    });
-
-    if (window.Navigator && typeof window.Navigator === "function") {
-      try {
-        Object.defineProperty(window, "navigator", {
-          value: navigatorProxy,
-          configurable: true,
-          writable: true,
-        });
-      } catch (e) {
-        console.warn("Unable to replace navigator object with proxy:", e);
-      }
+  let userAgentData: UserAgentData | undefined;
+  if (originalNavigator.userAgentData) {
+    try {
+      const parsed = await parseUserAgent(userAgent);
+      userAgentData = {
+        ...originalNavigator.userAgentData,
+        ...parsed,
+        getHighEntropyValues: async () => parsed,
+      } as UserAgentData;
+    } catch (error) {
+      console.warn("Failed to parse userAgent for userAgentData:", error);
     }
-  } catch (error) {
-    console.warn("Failed to set userAgentData safely:", error);
   }
-}
 
-async function updateUserAgent(userAgent: string): Promise<void> {
-  if (typeof window === "undefined") return;
+  // Always proxy the original navigator so repeated set() calls don't
+  // accumulate proxy chains.
+  const proxy = new Proxy(originalNavigator, {
+    get(target, prop) {
+      if (prop === "userAgent") return userAgent;
+      if (prop === "userAgentData" && userAgentData) return userAgentData;
+      return Reflect.get(target, prop);
+    },
+  });
+
+  if (typeof window.Navigator !== "function") return;
 
   try {
-    const navigatorProxy = new Proxy(window.navigator, {
-      get(target, prop) {
-        if (prop === "userAgent") {
-          return userAgent;
-        }
-        return Reflect.get(target, prop);
-      },
+    Object.defineProperty(window, "navigator", {
+      value: proxy,
+      configurable: true,
+      writable: true,
     });
-
-    if (window.Navigator && typeof window.Navigator === "function") {
-      try {
-        Object.defineProperty(window, "navigator", {
-          value: navigatorProxy,
-          configurable: true,
-          writable: true,
-        });
-      } catch (e) {
-        console.warn("Unable to replace navigator object with proxy:", e);
-
-        try {
-          Object.defineProperty(window.navigator, "userAgent", {
-            get: () => userAgent,
-            configurable: true,
-          });
-        } catch (fallbackError) {
-          console.warn("All UA spoofing methods failed:", fallbackError);
-        }
-      }
+  } catch (e) {
+    console.warn("Unable to replace navigator object with proxy:", e);
+    // Partial fallback: UA-only override on the existing navigator.
+    // userAgentData stays untouched in this branch — see README/Troubleshooting.
+    try {
+      Object.defineProperty(window.navigator, "userAgent", {
+        get: () => userAgent,
+        configurable: true,
+      });
+    } catch (fallbackError) {
+      console.warn("All UA spoofing methods failed:", fallbackError);
     }
-
-    if (window.navigator.userAgentData) {
-      const parsedData = await parseUserAgent(userAgent);
-      setUserAgentData(parsedData);
-    }
-  } catch (error) {
-    console.warn("Failed to update userAgent safely:", error);
   }
 }
 
 export async function set(userAgent?: string): Promise<void> {
   if (typeof window === "undefined") return;
   ensureInitialized();
-
-  try {
-    await updateUserAgent(userAgent || beforeAgent);
-  } catch (error) {
-    console.warn("Error in userAgent setting process:", error);
-  }
+  await applyNavigator(userAgent || beforeAgent);
 }
 
 export function getFromArgs(args?: UserAgentArgs): string {
