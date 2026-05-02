@@ -1,7 +1,11 @@
 import React, { useCallback, useMemo } from "react";
 
 import { useArgs, useParameter } from "storybook/manager-api";
-import { WithTooltip, TooltipLinkList, Button } from "storybook/internal/components";
+import {
+  PopoverProvider,
+  TooltipLinkList,
+  ToggleButton,
+} from "storybook/internal/components";
 
 import { getUserAgent } from "../core";
 
@@ -11,9 +15,8 @@ import { DEFAULT_USER_AGENT_PARAMETER } from "../defaults";
 import { Link, UserAgentParameter } from "../types";
 import Icon from "./Icon";
 
-// Hook to get user agent list (memoized)
 function useUserAgentList(): UserAgentParameter[] {
-  const fromParameter = useParameter(PARAM_KEY);
+  const fromParameter = useParameter<UserAgentParameter[]>(PARAM_KEY);
   return useMemo(() => {
     if (Array.isArray(fromParameter) && fromParameter.length > 0) {
       return fromParameter;
@@ -22,7 +25,7 @@ function useUserAgentList(): UserAgentParameter[] {
   }, [fromParameter]);
 }
 
-export const Tool = React.memo(() => {
+export function Tool() {
   const [args, updateArgs] = useArgs();
   const currentUserAgent = getUserAgent(args);
   const userAgentList = useUserAgentList();
@@ -62,23 +65,23 @@ export const Tool = React.memo(() => {
   }, [setAgent, userAgentList, currentUserAgent]);
 
   return (
-    <WithTooltip
+    <PopoverProvider
       key={TOOL_ID}
       placement="bottom"
-      trigger="click"
-      tooltip={<TooltipLinkList links={links} />}
+      ariaLabel="User-Agent options"
+      hasChrome={false}
+      popover={<TooltipLinkList links={links} />}
     >
-      <Button
-        active={currentUserAgent.length > 0}
-        title="Change UserAgent"
+      <ToggleButton
+        pressed={currentUserAgent.length > 0}
+        ariaLabel="Change UserAgent"
         padding="small"
         variant="ghost"
       >
         <Icon />
-      </Button>
-    </WithTooltip>
+      </ToggleButton>
+    </PopoverProvider>
   );
-});
+}
 
-// Refactored getUserAgentList to a hook
 Tool.displayName = "UserAgentTool";

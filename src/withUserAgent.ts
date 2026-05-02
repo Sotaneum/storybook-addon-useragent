@@ -20,32 +20,38 @@ export function withUserAgent(
     [context.args?.useragent],
   );
 
-  const componentId = useMemo(() => context.id, [context.id]);
-
   useEffect(() => {
-    let cleanup: (() => Promise<void>) | (() => void) = () => {};
+    let cancelled = false;
+    let cleanupFn: (() => Promise<void> | void) | null = null;
 
-    (async () => {
-      try {
-        setIsUserAgentSet(false);
-        const cleanupFn = await setUserAgent(userAgent);
-        cleanup = cleanupFn;
+    setIsUserAgentSet(false);
+
+    setUserAgent(userAgent)
+      .then((fn) => {
+        if (cancelled) {
+          const r = fn();
+          if (r instanceof Promise) r.catch(() => {});
+          return;
+        }
+        cleanupFn = fn;
         setIsUserAgentSet(true);
-      } catch (error) {
+      })
+      .catch((error) => {
+        if (cancelled) return;
         console.error("Failed to set user agent:", error);
         setIsUserAgentSet(true);
-      }
-    })();
+      });
 
     return () => {
-      if (cleanup instanceof Promise) {
-        cleanup.catch((err) => console.error("Error during cleanup:", err));
-      } else {
-        cleanup();
+      cancelled = true;
+      if (cleanupFn) {
+        const r = cleanupFn();
+        if (r instanceof Promise) {
+          r.catch((err) => console.error("Error during cleanup:", err));
+        }
       }
-      setIsUserAgentSet(false);
     };
-  }, [userAgent, componentId]);
+  }, [userAgent, context.id]);
 
   if (userAgent && !isUserAgentSet) {
     return null;
