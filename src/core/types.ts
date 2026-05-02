@@ -4,7 +4,7 @@ interface Brand {
 }
 
 interface UserAgentData {
-  userAgent: string;
+  userAgent?: string;
   brands?: Brand[];
   mobile?: boolean;
   platform?: string;

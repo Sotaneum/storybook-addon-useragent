@@ -9,16 +9,19 @@ import {
 
 import { getUserAgent } from "../core";
 
-import { PARAM_KEY, TOOL_ID } from "../constants";
+import { ARG_KEY, PARAM_KEY } from "../constants";
 import { DEFAULT_USER_AGENT_PARAMETER } from "../defaults";
 
 import { Link, UserAgentParameter } from "../types";
 import Icon from "./Icon";
 
+const OFF_ID = "__off__";
+
 function useUserAgentList(): UserAgentParameter[] {
   const fromParameter = useParameter<UserAgentParameter[]>(PARAM_KEY);
   return useMemo(() => {
-    if (Array.isArray(fromParameter) && fromParameter.length > 0) {
+    // Respect explicit empty arrays — only fall back when undefined.
+    if (Array.isArray(fromParameter)) {
       return fromParameter;
     }
     return DEFAULT_USER_AGENT_PARAMETER;
@@ -31,26 +34,26 @@ export function Tool() {
   const userAgentList = useUserAgentList();
 
   const setAgent = useCallback(
-    (userAgent?: string) => {
-      updateArgs({
-        useragent: currentUserAgent !== userAgent ? userAgent : "",
-      });
+    (userAgent: string) => {
+      updateArgs({ [ARG_KEY]: userAgent });
     },
-    [updateArgs, currentUserAgent],
+    [updateArgs],
   );
 
   const links: Link[] = useMemo(() => {
-    const items = userAgentList.map(({ name, userAgent }, idx) => {
-      return {
-        id: `${idx}_${name}`,
-        title: name,
-        active: userAgent === currentUserAgent,
-        onClick: () => setAgent(userAgent),
-      };
-    });
+    // First-match-wins: avoid double-active when the list contains duplicate UAs.
+    const activeIdx = userAgentList.findIndex(
+      ({ userAgent }) => userAgent === currentUserAgent,
+    );
 
-    const hasActive = items.some(({ active }) => active);
-    const isCustomSelected = !!currentUserAgent && !hasActive;
+    const items: Link[] = userAgentList.map(({ name, userAgent }, idx) => ({
+      id: `${idx}_${name}`,
+      title: name,
+      active: idx === activeIdx,
+      onClick: () => setAgent(userAgent),
+    }));
+
+    const isCustomSelected = !!currentUserAgent && activeIdx === -1;
 
     if (isCustomSelected) {
       items.push({
@@ -61,12 +64,20 @@ export function Tool() {
       });
     }
 
+    if (currentUserAgent) {
+      items.unshift({
+        id: OFF_ID,
+        title: "Reset (browser default)",
+        active: false,
+        onClick: () => setAgent(""),
+      });
+    }
+
     return items;
   }, [setAgent, userAgentList, currentUserAgent]);
 
   return (
     <PopoverProvider
-      key={TOOL_ID}
       placement="bottom"
       ariaLabel="User-Agent options"
       hasChrome={false}
