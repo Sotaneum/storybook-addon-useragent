@@ -1,3 +1,15 @@
+# v10.0.0 (Sat May 02 2026)
+
+#### 💥 Breaking Change
+
+- v10.0.0 [#52](https://github.com/Sotaneum/storybook-addon-useragent/pull/52) ([@Sotaneum](https://github.com/Sotaneum))
+
+#### Authors: 1
+
+- DONG GUN LEE ([@Sotaneum](https://github.com/Sotaneum))
+
+---
+
 # v9.0.0 (Sat May 02 2026)
 
 #### 💥 Breaking Change
