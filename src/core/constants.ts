@@ -1,3 +1,5 @@
+export const ARG_KEY = "useragent";
+
 export const PLATFORMS = {
   WINDOWS: "Windows",
   MACINTOSH: "Macintosh",
@@ -32,7 +34,6 @@ export type Browser = (typeof BROWSER_MAPPING)[keyof typeof BROWSER_MAPPING];
 
 export const REGEX = {
   MOBILE: /Mobile|Android|iPhone|iPad|iPod/i,
-  PLATFORM: /Windows|Macintosh|Linux|Android|iPhone|iPad|iPod/i,
   ARCH_INFO: /\((.*?)\)/,
   DEVICE_MODEL: {
     APPLE: /iPhone|iPad|iPod|MacBook|MacBook Pro|MacBook Air|iMac|Mac Pro/i,

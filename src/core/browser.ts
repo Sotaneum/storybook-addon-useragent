@@ -121,13 +121,8 @@ export async function parseUserAgent(
     wow64: isWow64,
   };
 
-  if (brandList && brandList.length > 0) {
-    result.brands = brandList;
-    result.fullVersionList = brandList;
-  } else {
-    result.brands = [];
-    result.fullVersionList = [];
-  }
+  result.brands = brandList;
+  result.fullVersionList = brandList;
 
   return result;
 }

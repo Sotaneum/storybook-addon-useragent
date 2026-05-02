@@ -7,19 +7,13 @@ import {
 } from "./constants";
 
 export function detectPlatform(userAgent: string): Platform | undefined {
-  const platformMatch = userAgent.match(REGEX.PLATFORM);
-  if (!platformMatch) {
-    return undefined;
-  }
-
-  const match = platformMatch[0];
-
-  if (/Windows/i.test(match)) return PLATFORMS.WINDOWS;
-  else if (/Macintosh/i.test(match)) return PLATFORMS.MACINTOSH;
-  else if (/Linux/i.test(match)) return PLATFORMS.LINUX;
-  else if (/Android/i.test(match)) return PLATFORMS.ANDROID;
-  else if (/iPhone|iPad|iPod/i.test(match)) return PLATFORMS.IOS;
-
+  // Order matters: Android UA strings include "Linux", iOS UA strings include
+  // "Macintosh"-like tokens — check the more specific platforms first.
+  if (/Windows/i.test(userAgent)) return PLATFORMS.WINDOWS;
+  if (/Android/i.test(userAgent)) return PLATFORMS.ANDROID;
+  if (/iPhone|iPad|iPod/i.test(userAgent)) return PLATFORMS.IOS;
+  if (/Macintosh/i.test(userAgent)) return PLATFORMS.MACINTOSH;
+  if (/Linux/i.test(userAgent)) return PLATFORMS.LINUX;
   return undefined;
 }
 

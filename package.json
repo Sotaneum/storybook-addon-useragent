@@ -51,7 +51,7 @@
     "build:watch": "npm run build -- --watch",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "vitest run",
     "start": "run-p build:watch 'storybook --quiet'",
     "prerelease": "zx scripts/prepublish-checks.js",
     "release": "npm run build && auto shipit",
@@ -85,6 +85,7 @@
     "typescript": "^5.8.2",
     "typescript-eslint": "^8.59.1",
     "vite": "^6.2.2",
+    "vitest": "^4.1.5",
     "zx": "^8.4.1"
   },
   "peerDependencies": {

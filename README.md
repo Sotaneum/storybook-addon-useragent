@@ -34,6 +34,8 @@
 | v9                | `npm i -D storybook-addon-useragent@9`       | Maintained — feature improvements backported on a best-effort basis |
 | v8 / v7 / v6      | `npm i -D storybook-addon-useragent@<major>` | Available on npm, no longer updated                                 |
 
+Works with any Storybook renderer (React, Web Components, Vue, Svelte, …): the UserAgent is applied via a Storybook `loader` rather than a renderer-specific decorator, so rendering is never blocked by the addon.
+
 You can check for updates and upgrade to the latest version:
 
 ```bash
@@ -221,7 +223,7 @@ This addon modifies the `navigator` object to simulate different user agents. Wh
 | ----------------------------------------- | -------------------------------- | ----------------------------------------------- |
 | UserAgent not changing                    | Browser security restrictions    | Try a different browser (Chrome works best)     |
 | UI components not responding to UserAgent | Component not using UA detection | Ensure component checks navigator.userAgent     |
-| Stories show error when changing UA       | Timing or cleanup issues         | Reload the story or check for errors in console |
+| Stories show error when changing UA       | Async loader timing              | Reload the story or check for errors in console |
 | Inconsistent behavior                     | Caching or stale state           | Clear browser cache and restart Storybook       |
 
 ### Debugging Tips
