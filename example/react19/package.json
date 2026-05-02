@@ -21,6 +21,7 @@
     "@types/react": "^19.0.10",
     "@types/react-dom": "^19.0.4",
     "@vitejs/plugin-react": "^4.3.4",
+    "eslint-plugin-storybook": "^9.1.20",
     "storybook": "^9.1.20",
     "storybook-addon-useragent": "../../",
     "typescript": "~5.7.2",
