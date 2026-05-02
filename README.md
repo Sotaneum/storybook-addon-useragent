@@ -30,7 +30,8 @@
 
 | Storybook Version | Installation Command                   | Status                                     |
 | ----------------- | -------------------------------------- | ------------------------------------------ |
-| v8                | `npm i -D storybook-addon-useragent@8` | Current major version, actively maintained |
+| v9                | `npm i -D storybook-addon-useragent@9` | Current major version, actively maintained |
+| v8                | `npm i -D storybook-addon-useragent@8` | Legacy support                             |
 | v7                | `npm i -D storybook-addon-useragent@7` | Legacy support                             |
 | v6                | `npm i -D storybook-addon-useragent@6` | Legacy support                             |
 

@@ -59,16 +59,9 @@
     "build-storybook": "storybook build"
   },
   "devDependencies": {
-    "@storybook/addon-essentials": "^8.6.8",
-    "@storybook/components": "^8.6.8",
-    "@storybook/manager": "^8.6.8",
-    "@storybook/manager-api": "^8.6.8",
-    "@storybook/preview": "^8.6.8",
-    "@storybook/preview-api": "^8.6.8",
-    "@storybook/react": "^8.6.8",
-    "@storybook/react-vite": "^8.6.8",
-    "@storybook/types": "^8.6.8",
-    "@types/node": "^22.13.12",
+    "@storybook/react": "^9.1.20",
+    "@storybook/react-vite": "^9.1.20",
+    "@types/node": "^22.19.17",
     "@types/react": "^19.0.12",
     "@types/react-dom": "^19.0.4",
     "@vitejs/plugin-react": "^4.3.4",
@@ -80,11 +73,14 @@
     "prompts": "^2.4.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "storybook": "^8.6.8",
+    "storybook": "^9.1.20",
     "tsup": "^8.4.0",
     "typescript": "^5.8.2",
     "vite": "^6.2.2",
     "zx": "^8.4.1"
+  },
+  "peerDependencies": {
+    "storybook": "^9.0.0"
   },
   "publishConfig": {
     "access": "public",
