@@ -1,5 +1,6 @@
 import type { UserAgentData, UserAgentArgs } from "./types";
 import { parseUserAgent } from "./browser";
+import { ARG_KEY } from "../constants";
 
 let initialized = false;
 let beforeAgent = "";
@@ -23,7 +24,7 @@ async function applyNavigator(userAgent: string): Promise<void> {
         ...originalNavigator.userAgentData,
         ...parsed,
         getHighEntropyValues: async () => parsed,
-      } as UserAgentData;
+      };
     } catch (error) {
       console.warn("Failed to parse userAgent for userAgentData:", error);
     }
@@ -69,5 +70,5 @@ export async function set(userAgent?: string): Promise<void> {
 }
 
 export function getFromArgs(args?: UserAgentArgs): string {
-  return args?.useragent ?? "";
+  return args?.[ARG_KEY] ?? "";
 }

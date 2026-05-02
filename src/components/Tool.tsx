@@ -9,7 +9,7 @@ import {
 
 import { getUserAgent } from "../core";
 
-import { PARAM_KEY, TOOL_ID } from "../constants";
+import { ARG_KEY, PARAM_KEY, TOOL_ID } from "../constants";
 import { DEFAULT_USER_AGENT_PARAMETER } from "../defaults";
 
 import { Link, UserAgentParameter } from "../types";
@@ -33,7 +33,7 @@ export function Tool() {
   const setAgent = useCallback(
     (userAgent?: string) => {
       updateArgs({
-        useragent: currentUserAgent !== userAgent ? userAgent : "",
+        [ARG_KEY]: currentUserAgent !== userAgent ? userAgent : "",
       });
     },
     [updateArgs, currentUserAgent],
