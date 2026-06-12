@@ -48,7 +48,7 @@ export default defineConfig(async (options) => {
     minify: !options.watch,
     treeshake: true,
     sourcemap: true,
-    clean: true,
+    clean: false,
   };
 
   const configs: Options[] = [];
@@ -59,6 +59,7 @@ export default defineConfig(async (options) => {
   if (exportEntries.length) {
     configs.push({
       ...commonConfig,
+      clean: configs.length === 0 && !options.watch,
       entry: exportEntries,
       dts: {
         resolve: true,
@@ -76,6 +77,7 @@ export default defineConfig(async (options) => {
   if (managerEntries.length) {
     configs.push({
       ...commonConfig,
+      clean: configs.length === 0 && !options.watch,
       entry: managerEntries,
       format: ["esm"],
       target: BROWSER_TARGET,
@@ -90,6 +92,7 @@ export default defineConfig(async (options) => {
   if (previewEntries.length) {
     configs.push({
       ...commonConfig,
+      clean: configs.length === 0 && !options.watch,
       entry: previewEntries,
       dts: {
         resolve: true,
@@ -107,6 +110,7 @@ export default defineConfig(async (options) => {
   if (nodeEntries.length) {
     configs.push({
       ...commonConfig,
+      clean: configs.length === 0 && !options.watch,
       entry: nodeEntries,
       format: ["cjs"],
       target: NODE_TARGET,
